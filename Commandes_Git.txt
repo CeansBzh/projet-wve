@@ -1,3 +1,4 @@
 Ajouter des fichiers à l'index: git add "nomDuFichier"
 Sauvegarder des modifications avec un message: git commit -m "monMessage"
 Sauvegarder + mettre à jour: git commit -a -m "monMessage"
+Mettre en pause une modification: git stash => reprendre: git stash pop
