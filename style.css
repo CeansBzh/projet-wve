@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
 
 html, body {
     margin: 0;
@@ -9,6 +10,7 @@ body {
    padding:0;
    background-color: #f4f4f4;
    box-sizing: border-box;
+   font-family: 'Noto Sans', sans-serif;
 }
 
 header {
@@ -22,11 +24,16 @@ header {
   border-bottom: 5px #FFC107 solid;
 }
 
-.wrapper {
+.corps {
   position: relative;
   margin: auto;
   padding: 15px 10px;
   max-width: 75%;
   background-color: #fff;
   height: 100%;
+}
+
+.titre_corps {
+  text-align: center;
+  font-weight: 700;
 }
