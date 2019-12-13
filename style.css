@@ -27,8 +27,8 @@ header {
 .corps {
   position: relative;
   margin: auto;
-  padding: 15px 10px;
-  max-width: 75%;
+  padding: 15px 50px 10px;
+  width: 65vw;
   background-color: #fff;
   height: 100%;
 }
@@ -36,4 +36,21 @@ header {
 .titre_corps {
   text-align: center;
   font-weight: 700;
+}
+
+.feed-description {
+  padding-left:10px;
+  margin-left:10px;
+  border-left:2px solid #eee;
+}
+.feed-lists {
+  padding-left:1em;
+  max-width: 80%;
+  margin: auto;
+}
+.feed-item-image {
+  max-width: 300px;
+  max-height: 200px;
+  float: right;
+  margin-left: 10px;
 }
