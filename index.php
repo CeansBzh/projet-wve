@@ -28,13 +28,13 @@ $feed->handle_content_type();
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>WVE Actualité</title>
+		<title>MultiActu</title>
 		<link rel="stylesheet" href="style.css" />
 		<script type="text/javascript" src="script.js"></script>
 	</head>
 	<body>
 		<header>
-			<h1>PolyActu</h1>
+			<h1>MultiActu</h1>
 			<h2>L'actualité en un clic</h2>
 		</header>
 		<div class="corps">
