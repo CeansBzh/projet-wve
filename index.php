@@ -1,16 +1,19 @@
 <?php
-
-// Make sure SimplePie is included. You may need to change this to match the location of autoloader.php
-// For 1.0-1.2:
-#require_once('../simplepie.inc');
-// For 1.3+:
 require_once('php/autoloader.php');
 
+// Create a new class that extends an existing class
+class SimplePie_Extras extends SimplePie {
+
+}
+
 // We'll process this feed with all of the default options.
-$feed = new SimplePie();
+$feed = new SimplePie_Extras();
 
 // Set the feed to process.
 $feed->set_feed_url('https://www.unrealengine.com/en-US/rss');
+
+//Range les articles dans l'ordre chronologique
+$feed->enable_order_by_date(true);
 
 // Run SimplePie.
 $feed->init();
@@ -27,6 +30,7 @@ $feed->handle_content_type();
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>WVE Actualité</title>
 		<link rel="stylesheet" href="style.css" />
+		<script type="text/javascript" src="script.js"></script>
 	</head>
 	<body>
 		<header>
@@ -36,16 +40,24 @@ $feed->handle_content_type();
 		<div class="corps">
 			<h2 class="titre_corps">Derniers articles</h2>
 			<?php
-			/*
-			Here, we'll loop through all of the items in the feed, and $item represents the current item in the loop.
-			*/
+			//On recommence le code suivant pour chaque article
 			foreach ($feed->get_items() as $item):
+			?>
+			<?php
+			$premiereImage = function ($html) {
+	  		if (preg_match('/<img.+?src="(.+?)"/', $html, $matches))
+	  		{
+	  			return $matches[1];
+	  		}
+	  		else return 'error.png';
+	  	};
 			?>
 
 				<div class="item">
-					<h2><a href="<?php echo $item->get_permalink(); ?>"><?php echo $item->get_title(); ?></a></h2>
+					<h2 class"titre-article"><a href="<?php echo $item->get_permalink(); ?>"><?php echo $item->get_title(); ?></a></h2>
 					<p><?php echo $item->get_description(); ?></p>
 					<p><small>Posted on <?php echo $item->get_date('j F Y | g:i a'); ?></small></p>
+					<img src="<?php echo $premiereImage($item->get_content()); ?>"/>
 				</div>
 
 			<?php endforeach; ?>

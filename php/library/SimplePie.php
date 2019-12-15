@@ -648,7 +648,7 @@ class SimplePie
 	 * @access private
 	 */
 	public $enable_exceptions = false;
-	
+
 	/**
 	 * The SimplePie class contains feed level data and options
 	 *
@@ -1382,7 +1382,7 @@ class SimplePie
 
 			list($headers, $sniffed) = $fetched;
 		}
-		
+
 		// Empty response check
 		if(empty($this->raw_data)){
 			$this->error = "A feed could not be found at `$this->feed_url`. Empty body.";
@@ -1914,7 +1914,7 @@ class SimplePie
 
 	/**
 	 * Get the URL for the feed
-	 * 
+	 *
 	 * When the 'permanent' mode is enabled, returns the original feed URL,
 	 * except in the case of an `HTTP 301 Moved Permanently` status response,
 	 * in which case the location of the first redirection is returned.
