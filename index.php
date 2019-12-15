@@ -30,7 +30,6 @@ $feed->handle_content_type();
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>MultiActu</title>
 		<link rel="stylesheet" href="style.css" />
-		<script type="text/javascript" src="script.js"></script>
 	</head>
 	<body>
 		<header>
