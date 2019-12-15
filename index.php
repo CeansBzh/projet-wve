@@ -54,7 +54,7 @@ $feed->handle_content_type();
 			?>
 
 				<div class="item">
-					<h2 class"titre-article"><a href="<?php echo $item->get_permalink(); ?>"><?php echo $item->get_title(); ?></a></h2>
+					<h2 class="titre-article"><a href="<?php echo $item->get_permalink(); ?>"><?php echo $item->get_title(); ?></a></h2>
 					<p><?php echo $item->get_description(); ?></p>
 					<p><small>Posted on <?php echo $item->get_date('j F Y | g:i a'); ?></small></p>
 					<img src="<?php echo $premiereImage($item->get_content()); ?>"/>
