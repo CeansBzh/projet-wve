@@ -49,7 +49,7 @@ $feed->handle_content_type();
 	  		{
 	  			return $matches[1];
 	  		}
-	  		else return 'error.png';
+	  		else return '';
 	  	};
 			?>
 
