@@ -1,13 +1,8 @@
 <?php
 require_once('php/autoloader.php');
 
-// Create a new class that extends an existing class
-class SimplePie_Extras extends SimplePie {
-
-}
-
 // We'll process this feed with all of the default options.
-$feed = new SimplePie_Extras();
+$feed = new SimplePie();
 
 // Set the feed to process.
 $feed->set_feed_url('https://www.unrealengine.com/en-US/rss');
@@ -20,8 +15,6 @@ $feed->init();
 
 // This makes sure that the content is sent to the browser as text/html and the UTF-8 character set (since we didn't change it).
 $feed->handle_content_type();
-
-// Let's begin our XHTML webpage code.  The DOCTYPE is supposed to be the very first thing, so we'll keep it on the same line as the closing-PHP tag.
 ?>
 <!DOCTYPE html>
 <html>
