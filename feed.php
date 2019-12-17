@@ -18,6 +18,9 @@ $feed->handle_content_type();
 ?>
 <!DOCTYPE html>
 <html>
+  <head>
+  <link rel="stylesheet" href="style.css" />
+  </head>
   <div id="main">
     <?php
     //On recommence le code suivant pour chaque article
@@ -31,13 +34,16 @@ $feed->handle_content_type();
       }
       else return '';
     };
+    //$media_group = $item->get_item_tags('', 'enclosure');
+    //$file = $media_group[0]['attribs']['']['url'];
+    //echo $file;
     ?>
 
       <div class="item">
+        <img class="image-article" src="<?php echo $premiereImage($item->get_content()); ?>"/>
         <h2 class="titre-article"><a href="<?php echo $item->get_permalink(); ?>"><?php echo $item->get_title(); ?></a></h2>
-        <p><?php echo $item->get_description(); ?></p>
-        <p><small>Posted on <?php echo $item->get_date('j F Y | g:i a'); ?></small></p>
-        <img src="<?php echo $premiereImage($item->get_content()); ?>"/>
+        <p class"desc-article"><?php echo $item->get_description(); ?><br/></p>
+        <p><small>Publié le <?php echo $item->get_date('j F Y | g:i a'); ?></small></p>
       </div>
 
     <?php endforeach; ?>

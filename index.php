@@ -13,7 +13,7 @@
 			<h2>L'actualité en un clic</h2>
 		</header>
 		<div class="corps">
-			<h2 class="titre_corps">Derniers articles</h2>
+			<h2 class="titre-corps">Derniers articles</h2>
 			<div id="main"></div>
 		</div>
 		<script type="text/javascript" language="javascript">

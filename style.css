@@ -32,12 +32,23 @@ header {
   background-color: #fff;
 }
 
-.titre_corps {
+.titre-corps {
   text-align: center;
   font-weight: 700;
 }
 
-.feed-description {
+#main {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* .item {
+  flex: 50%;
+  padding: 0 4px;
+}
+
+.desc-article {
   padding-left:10px;
   margin-left:10px;
   border-left:2px solid #eee;
@@ -47,9 +58,36 @@ header {
   max-width: 80%;
   margin: auto;
 }
-.feed-item-image {
-  max-width: 300px;
-  max-height: 200px;
+.image-article {
+  max-width: 50vw;
+  max-height: 40vh;
   float: right;
   margin-left: 10px;
+}
+*/
+
+.item {
+  display: grid;
+  grid-template:
+    "img titre" min-content
+    "img desc" auto / 1fr 2fr;
+  grid-column-gap: 1.5em;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.image-article {
+  grid-area: img;
+  max-width: 100%;
+}
+
+.titre-article {
+  grid-area: titre;
+  margin: 0;
+  font-weight: 300;
+}
+
+.desc-article {
+  grid-area: desc;
 }
