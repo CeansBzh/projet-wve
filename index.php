@@ -1,21 +1,3 @@
-<?php
-require_once('php/autoloader.php');
-
-// We'll process this feed with all of the default options.
-$feed = new SimplePie();
-
-// Set the feed to process.
-$feed->set_feed_url('https://www.unrealengine.com/en-US/rss');
-
-//Range les articles dans l'ordre chronologique
-$feed->enable_order_by_date(true);
-
-// Run SimplePie.
-$feed->init();
-
-// This makes sure that the content is sent to the browser as text/html and the UTF-8 character set (since we didn't change it).
-$feed->handle_content_type();
-?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -23,6 +5,7 @@ $feed->handle_content_type();
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>MultiActu</title>
 		<link rel="stylesheet" href="style.css" />
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<header>
@@ -31,28 +14,14 @@ $feed->handle_content_type();
 		</header>
 		<div class="corps">
 			<h2 class="titre_corps">Derniers articles</h2>
-			<?php
-			//On recommence le code suivant pour chaque article
-			foreach ($feed->get_items() as $item):
-			?>
-			<?php
-			$premiereImage = function ($html) {
-	  		if (preg_match('/<img.+?src="(.+?)"/', $html, $matches))
-	  		{
-	  			return $matches[1];
-	  		}
-	  		else return '';
-	  	};
-			?>
-
-				<div class="item">
-					<h2 class="titre-article"><a href="<?php echo $item->get_permalink(); ?>"><?php echo $item->get_title(); ?></a></h2>
-					<p><?php echo $item->get_description(); ?></p>
-					<p><small>Posted on <?php echo $item->get_date('j F Y | g:i a'); ?></small></p>
-					<img src="<?php echo $premiereImage($item->get_content()); ?>"/>
-				</div>
-
-			<?php endforeach; ?>
+			<div id="main"></div>
 		</div>
+		<script type="text/javascript" language="javascript">
+		$(document).ready(function() { /// Wait till page is loaded
+		      $('#main').load('feed.php #main', function() {
+		           /// can add another function here
+		      });
+		   }); //// End of Wait till page is loaded
+		</script>
 	</body>
 </html>
