@@ -24,6 +24,10 @@ header {
   border-bottom: 5px #FFC107 solid;
 }
 
+h2, p {
+  margin: 0;
+}
+
 .corps {
   position: relative;
   margin: auto;
@@ -35,59 +39,82 @@ header {
 .titre-corps {
   text-align: center;
   font-weight: 700;
+  margin-bottom: 15px;
 }
 
 #main {
   display: flex;
   flex-wrap: wrap;
-  padding: 0 4px;
+  min-width: inherit;
+  max-width: inherit;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
-
-/* .item {
-  flex: 50%;
-  padding: 0 4px;
-}
-
-.desc-article {
-  padding-left:10px;
-  margin-left:10px;
-  border-left:2px solid #eee;
-}
-.feed-lists {
-  padding-left:1em;
-  max-width: 80%;
-  margin: auto;
-}
-.image-article {
-  max-width: 50vw;
-  max-height: 40vh;
-  float: right;
-  margin-left: 10px;
-}
-*/
 
 .item {
   display: grid;
-  grid-template:
-    "img titre" min-content
-    "img desc" auto / 1fr 2fr;
+  grid-template-columns: 1fr 0.5fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 0.25fr;
+  grid-template-areas:
+    "b b a a"
+    "b b c c"
+    "b b d d";
   grid-column-gap: 1.5em;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
-  padding: 1.5em;
   margin-bottom: 1.5em;
+  border-radius: 25px 0px 0px 0px;
 }
 
 .image-article {
-  grid-area: img;
-  max-width: 100%;
+  grid-area: b;
+  min-width: 20vw;
+  max-width: inherit;
+  width: 100%;
+  border-radius: 25px 0px 0px 0px;
 }
 
 .titre-article {
-  grid-area: titre;
+  grid-area: a;
   margin: 0;
   font-weight: 300;
 }
 
 .desc-article {
-  grid-area: desc;
+  grid-area: c;
+  margin: 10px 0px 10px 0;
 }
+
+.date-article {
+  grid-area: d;
+}
+
+/*.item {
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+  margin-bottom: 1.5em;
+  min-width: inherit;
+  max-width: inherit;
+  width: 100%;
+  border-radius: 25px;
+}
+
+.image-article {
+  padding: 0 0 10px;
+  min-width: inherit;
+  max-width: inherit;
+  width: 100%;
+  border-radius: 25px 25px 0px 0px;
+}
+
+.titre-article {
+  margin-left: 15px;
+}
+
+.desc-article {
+  margin-left: 15px;
+}
+
+.date-article {
+  margin-left: 15px;
+}*/

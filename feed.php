@@ -42,8 +42,8 @@ $feed->handle_content_type();
       <div class="item">
         <img class="image-article" src="<?php echo $premiereImage($item->get_content()); ?>"/>
         <h2 class="titre-article"><a href="<?php echo $item->get_permalink(); ?>"><?php echo $item->get_title(); ?></a></h2>
-        <p class"desc-article"><?php echo $item->get_description(); ?><br/></p>
-        <p><small>Publié le <?php echo $item->get_date('j F Y | g:i a'); ?></small></p>
+        <p class="desc-article"><?php echo $item->get_description(); ?><br/></p>
+        <p class="date-article"><small>Publié le <?php echo $item->get_date('j F Y | g:i a'); ?></small></p>
       </div>
 
     <?php endforeach; ?>
