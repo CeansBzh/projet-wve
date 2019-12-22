@@ -1,6 +1,5 @@
+<?php include('parts/header.php'); //on inclus le header?>
 <?php
-session_start();
-include('connexionDB.php');
 
 if(isset($_POST['forminscription'])) {
   $pseudo = htmlspecialchars($_POST['pseudo']);
@@ -35,13 +34,13 @@ if(isset($_POST['forminscription'])) {
              //Envoi d'un email de confirmation de compte
              $req = $DB->query("SELECT * FROM users WHERE email = ?", array($mail));
              $req = $req->fetch();
-             $mail_to = $req['email'];
 
+             $mail_to = $req['email'];
              $subject = 'Prêts à raconter vos plus grandes aventures ?';
              $message = '<p>Bonjour ' . $req['username'] . ',</p><br>
-﻿  	            <p>Veuillez confirmer votre compte <a href="http://localhost/projet-wve/conf?id=' . $req['id'] . '&token=' . $token . '">Valider</a><p>';
+﻿  	            <p>Veuillez confirmer votre compte <a href="http://localhost/projet-wve/conf.php?id=' . $req['id'] . '&token=' . $token . '">Valider</a><p>';
              $headers = array(
-                'From' => 'ceans@voyages.com',
+                'From' => 'Ceans de voyages.com <ceans@voyages.com>',
                 'Reply-To' => 'ceans@voyages.com',
                 'X-Mailer' => 'PHP/' . phpversion(),
                 'Content-type' => 'text/html; charset=utf-8',
@@ -69,15 +68,6 @@ if(isset($_POST['forminscription'])) {
  }
 }
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Inscription</title>
-    </head>
-    <body>      
         <div>Inscription</div>
         <form method="POST" action="">
             <table>
@@ -135,5 +125,4 @@ if(isset($_POST['forminscription'])) {
             echo '<font color="red">'.$erreur."</font>";
          }
          ?>
-    </body>
-</html>
+<?php include('parts/footer.php'); //on inclus le footer?>
