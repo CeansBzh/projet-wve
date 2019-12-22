@@ -38,10 +38,8 @@
 
   if(isset($info_mess)){
     echo $info_mess;
-		sleep(3);
-		header('Location:  index.php');
+		header("refresh:5;url=index.php");
 		exit;
   }
 ?>
-    <a href="index.php">Accueil</a>
 <?php include('parts/footer.php'); //on inclus le footer?>
