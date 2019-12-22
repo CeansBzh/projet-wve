@@ -38,4 +38,6 @@
 
   // Faire une connexion à votre fonction
   $DB = new connexionDB();
+
+	$url = "http://voyage.livehost.fr"
 ?>

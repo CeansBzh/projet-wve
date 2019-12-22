@@ -38,7 +38,7 @@ if(isset($_POST['forminscription'])) {
              $mail_to = $req['email'];
              $subject = 'Prêts à raconter vos plus grandes aventures ?';
              $message = '<p>Bonjour ' . $req['username'] . ',</p><br>
-﻿  	            <p>Veuillez confirmer votre compte <a href="http://voyage.livehost.fr/conf.php?id=' . $req['id'] . '&token=' . $token . '">Valider</a><p>';
+﻿  	            <p>Veuillez confirmer votre compte <a href="'. $url . '/conf.php?id=' . $req['id'] . '&token=' . $token . '">Valider</a><p>';
              $headers = array(
                 'From' => 'Ceans de voyages.com <ceans@voyages.com>',
                 'Reply-To' => 'ceans@voyages.com',
