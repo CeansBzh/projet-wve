@@ -30,22 +30,25 @@ if(isset($_POST['forminscription'])) {
              // Exemples:
              // 39e9289a5b8328ecc4286da11076748716c41ec7fb94839a689f7dac5cdf5ba8bdc9a9acdc95b95245f80a00
              // On insert nos données dans la table utilisateur
-             $DB->insert("INSERT INTO users(username, email, password, date_inscritption, token) VALUES(?, ?, ?, ?, ?)", array($pseudo, $mail, $mdp, $date_inscription, $token));
+             $DB->insert("INSERT INTO users(username, email, password, date_inscription, token) VALUES(?, ?, ?, ?, ?)", array($pseudo, $mail, $mdp, $date_inscription, $token));
              $erreur = "Votre compte a bien été créé ! <a href=\"connexion.php\">Me connecter</a>";
              //Envoi d'un email de confirmation de compte
-             $req = $DB->query("SELECT * FROM utilisateur WHERE mail = ?", array($mail));
+             $req = $DB->query("SELECT * FROM users WHERE email = ?", array($mail));
              $req = $req->fetch();
-             $mail_to = $req['mail'];
-             //Création du header de l'e-mail.
-             $header = "From: no-reply@gmail.com\n";
-             $header .= "MIME-version: 1.0\n";
-             $header .= "Content-type: text/html; charset=utf-8\n";
-             $header .= "Content-Transfer-ncoding: 8bit";
-             //Fin header email
-             //Ajout du message au format HTML          
-             $contenu = '<p>Bonjour ' . $req['nom'] . ',</p><br>
-             <p>Veuillez confirmer votre compte <a href="http://localhost/projet-wve/conf?id=' . $req['id'] . '&token=' . $token . '">Valider</a><p>';     
-             mail($mail_to, 'Confirmation de votre compte', $contenu, $header);
+             $mail_to = $req['email'];
+
+             $subject = 'Prêts à raconter vos plus grandes aventures ?';
+             $message = '<p>Bonjour ' . $req['username'] . ',</p><br>
+﻿  	            <p>Veuillez confirmer votre compte <a href="http://localhost/projet-wve/conf?id=' . $req['id'] . '&token=' . $token . '">Valider</a><p>';
+             $headers = array(
+                'From' => 'ceans@voyages.com',
+                'Reply-To' => 'ceans@voyages.com',
+                'X-Mailer' => 'PHP/' . phpversion(),
+                'Content-type' => 'text/html; charset=utf-8',
+                'MIME-version' => '1.0',
+            );
+
+            mail($mail_to, $subject, $message, $headers);
            } else {
              $erreur = "Vos mots de passes ne correspondent pas !";
            }
