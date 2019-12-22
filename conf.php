@@ -37,7 +37,10 @@
   }
 
   if(isset($info_mess)){
-    echo $err_mess;
+    echo $info_mess;
+		sleep(3);
+		header('Location:  index.php');
+		exit;
   }
 ?>
     <a href="index.php">Accueil</a>

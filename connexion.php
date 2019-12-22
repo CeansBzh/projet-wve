@@ -32,6 +32,9 @@
           if ($req['id'] == ""){
             $valid = false;
             $er_mail = "Le mail ou le mot de passe est incorrecte";
+					}elseif($req['confirmation_token'] == 0){ // On remet à zéro la demande de nouveau mot de passe s'il y a bien un couple mail / mot de passe
+						$valid = false;
+            $er_mail = "Veuillez confirmer votre compte à partir de l'email qui vous a été envoyé";
           }elseif($req['reset_pass'] == 1){ // On remet à zéro la demande de nouveau mot de passe s'il y a bien un couple mail / mot de passe
             $DB->insert("UPDATE users SET reset_pass = 0 WHERE id = ?", array($req['id']));
           }
