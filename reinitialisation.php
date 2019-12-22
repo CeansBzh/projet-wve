@@ -10,16 +10,16 @@
     $valid = true;
 
     if (isset($_POST['oublie'])){
-      $mail = htmlentities(strtolower(trim($mail))); // On récupère le mail afin d envoyer le mail pour la récupèration du mot de passe 
+      $email = htmlentities(strtolower(trim($email))); // On récupère le email afin d envoyer le email pour la récupèration du mot de passe 
 
-      // Si le mail est vide alors on ne traite pas
-      if(empty($mail)){
+      // Si le email est vide alors on ne traite pas
+      if(empty($email)){
         $valid = false;
-        $er_mail = "Il faut mettre un mail";
+        $er_mail = "Il faut mettre un email";
       }
 
       if($valid){
-        $req = $DB->query("SELECT * FROM users WHERE email = ?", array($mail));
+        $req = $DB->query("SELECT * FROM users WHERE email = ?", array($email));
         $req = $req->fetch();
 
         if(isset($req['email'])){
@@ -33,7 +33,7 @@
             $objet = 'Nouveau mot de passe';
             $to = $req['email'];
 
-            //===== Création du header du mail.
+            //===== Création du header du email.
             $header = "From: Ceans de voyages.com <ceans@voyages.com> \n";
             $header .= "Reply-To: ".$to."\n";
             $header .= "MIME-version: 1.0\n";
@@ -47,7 +47,7 @@
             $message .= "<p style='text-align: center'><i><b>Votre nouveau mot de passe est : </b></i>".$new_pass."</p><br/>";
             $message .= "<p style='text-align: center'>Je vous conseille vivement de le changer à votre prochaine connexion !</p><br/>";
             $message .= '</body></html>';
-            //===== Envoi du mail
+            //===== Envoi du email
             mail($to, $objet, $message, $header);
 
             $DB->insert("UPDATE users SET password = ?, reset_pass = 1 WHERE email = ?", array($new_pass_crypt, $req['email']));
@@ -64,7 +64,7 @@
             <?php if (isset($er_mail)){ ?>
                 <div><?= $er_mail ?></div>
             <?php } ?>
-            <input type="email" placeholder="Adresse mail" name="mail" value="<?php if(isset($mail)){ echo $mail; }?>" required>
+            <input type="email" placeholder="Adresse email" name="email" value="<?php if(isset($email)){ echo $email; }?>" required>
             <button type="submit" name="oublie">Envoyer</button>
         </form>
 <?php include('parts/footer.php'); //on inclus le footer?>

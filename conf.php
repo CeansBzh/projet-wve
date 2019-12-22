@@ -28,7 +28,7 @@
       $err_mess = "Le lien n'est plus valide";
     }else{
       $DB->insert("UPDATE users SET token = NULL, confirmation_token = ? WHERE id = ?", array(date('Y-m-d H:i:s'), $req['id']));
-      $info_mess = "Votre compte a bien été validé";
+      $info_mess = 'Votre compte a bien été validé</br>';
     }
   }
 
@@ -38,7 +38,8 @@
 
   if(isset($info_mess)){
     echo $info_mess;
-		header("refresh:5;url=index.php");
+		echo 'Redirection automatique vers la page d\'acceuil dans 3 secondes...';
+		header("refresh:3;url=index.php");
 		exit;
   }
 ?>

@@ -6,7 +6,7 @@
 						<a href=\"reinitialisation.php\">Mot de passe oublié</a>";
 		} else {
 			echo "<a href=\"profil.php\">Mon profil</a>
-						<a href=\"modifier-profil.php\">Modifier mon profil</a>
+						<a href=\"modif-profil.php\">Modifier mon profil</a>
 						<a href=\"deconnexion.php\">Déconnexion</a>";
 		}
 	?>
