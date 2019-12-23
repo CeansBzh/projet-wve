@@ -43,6 +43,7 @@
               $_SESSION['id'] = $req['id']; // id de l'utilisateur unique pour les requêtes futures
               $_SESSION['username'] = $req['username'];
               $_SESSION['email'] = $req['email'];
+							$_SESSION['role'] = $req['role'];
 
               header('Location:  index');
               exit;

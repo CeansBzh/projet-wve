@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah&text=Voyages&display=swap|Noto+Sans:400,400i,600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah&text=Voyages&display=swap|Noto+Sans:400,700,700i&display=swap');
 
 html, body {
     margin: 0;
@@ -12,6 +12,8 @@ body {
    background-color: #f4f4f4;
    box-sizing: border-box;
    font-family: 'Noto Sans', sans-serif;
+	 font-size: 16px;
+	 line-height: 1.5;
 }
 
 header {
@@ -37,11 +39,40 @@ main {
   height: 100%;
 }
 
+/*Css des boutons de redirections */
+
+a > button {
+	display:inline-block;
+	padding:0.7em 1.4em;
+	margin:0 0.3em 0.3em 0;
+	box-sizing: border-box;
+	text-decoration:none;
+	font-family:'Roboto',sans-serif;
+	text-transform:uppercase;
+	font-weight:400;
+	color:#FFFFFF;
+	background-color:#3369ff;
+	box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+	text-align:center;
+	position:relative;
+	border-style: none;
+}
+a > button:active{
+	top:0.1em;
+}
+@media all and (max-width:600px){
+	a > button{
+		display:block;
+		margin:0.4em auto;
+	}
+}
+
+
 /*Css du logo "Voyages" du header */
 .logo {
 	text-align: center;
 	font-size: 4em;
-	margin: 10px;
+	margin: 10px 0px 25px;
 }
 
 .logo a {
@@ -93,4 +124,46 @@ li a:hover:not(.active) {
 
 @media screen and (max-width: 600px) {
   nav > ul > li {float: none;}
+	nav > ul > li.right {float: none;}
+}
+
+/*Css du main */
+
+.titre {
+	text-align: center;
+	font-size: 35px;
+	margin-top: 15px;
+}
+
+/*Css des articles */
+
+article {
+	margin: 5px 5px 10px;
+	border-radius: 25px 0px 0px 0px;
+	border: 2px grey solid;
+}
+
+.headerArticle{
+	padding: 5px 15px;
+	background: linear-gradient(#ffc823 0%, #efb300 100%) !important;
+	border-radius: 25px 0px 0px 0px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.corpsArticle {
+	padding: 5px 15px;
+}
+
+.dateArticle{
+	font-size: 14px;
+}
+
+.auteurArticle {
+	text-align: right;
+	padding: 5px 15px;
+	font-size: 18px;
+	font-weight: 700;
+	font-style: italic;
 }
