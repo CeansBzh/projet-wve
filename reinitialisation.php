@@ -1,7 +1,7 @@
 <?php include('parts/header.php'); //on inclus le header?>
 <?php
   if (isset($_SESSION['id'])){
-    header('Location: index.php');
+    header('Location: index');
     exit;
   }
 
@@ -53,7 +53,7 @@
             $DB->insert("UPDATE users SET password = ?, reset_pass = 1 WHERE email = ?", array($new_pass_crypt, $req['email']));
           }
         }
-        header('Location: connexion.php');
+        header('Location: connexion');
         exit;
       }
     }

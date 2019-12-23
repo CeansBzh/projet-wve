@@ -2,7 +2,7 @@
 <?php
 
   if (isset($_SESSION['id'])){
-    header('Location: index.php');
+    header('Location: index');
     exit;
   }
 
@@ -39,7 +39,7 @@
   if(isset($info_mess)){
     echo $info_mess;
 		echo 'Redirection automatique vers la page d\'acceuil dans 3 secondes...';
-		header("refresh:3;url=index.php");
+		header("refresh:3;url=index");
 		exit;
   }
 ?>

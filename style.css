@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah&text=Voyages&display=swap|Noto+Sans:400,400i,600&display=swap');
 
 html, body {
     margin: 0;
     height: 100%;
+		box-sizing: border-box;
+    padding: 0;
 }
 
 body {
@@ -14,25 +15,82 @@ body {
 }
 
 header {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Gloria Hallelujah', cursive;
   background-color:  #009688;
   position: relative;
-  color: #fff;
-  padding: 0 0 10px 50px;
+	padding-bottom: 10px;
   top: 0;
   overflow: auto;
   border-bottom: 5px #FFC107 solid;
 }
 
-h2, p {
+h1, h2, p {
   margin: 0;
 }
 
-.corps {
+main {
   position: relative;
   margin: auto;
-  padding: 15px 50px 10px;
+  padding: 0 50px 10px;
   width: 65vw;
   background-color: #fff;
   height: 100%;
+}
+
+/*Css du logo "Voyages" du header */
+.logo {
+	text-align: center;
+	font-size: 4em;
+	margin: 10px;
+}
+
+.logo a {
+	text-decoration: none;
+	color: #FFF;
+}
+
+/*Css de la barre de navigation navbar */
+
+nav {
+	position: -webkit-sticky; /* Safari */
+	position: sticky;
+	top: 0;
+  margin: 0 -50px;
+	padding: -15px 0 0;
+}
+
+nav > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+nav > ul > li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+.right {
+  float: right;
+}
+
+@media screen and (max-width: 600px) {
+  nav > ul > li {float: none;}
 }

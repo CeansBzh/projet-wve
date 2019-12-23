@@ -1,7 +1,7 @@
 <?php include('parts/header.php'); //on inclus le header?>
 <?php
 	if (!isset($_SESSION['id'])){
-		header('Location: index.php');
+		header('Location: index');
 		exit;
 	}
 
@@ -47,7 +47,7 @@
 				$_SESSION['username'] = $username;
 				$_SESSION['email'] = $email;
 
-				header('Location: profil.php');
+				header('Location: profil');
 				exit;
 			}
 		}

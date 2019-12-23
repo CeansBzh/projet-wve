@@ -2,7 +2,7 @@
 <?php
 // S'il n'y a pas de session alors on ne va pas sur cette page
 if(!isset($_SESSION['id'])){
-	header('Location: index.php');
+	header('Location: index');
 	exit;
 }
 // On récupère les informations de l'utilisateur connecté

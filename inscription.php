@@ -29,7 +29,7 @@ if(isset($_POST['forminscription'])) {
               // 39e9289a5b8328ecc4286da11076748716c41ec7fb94839a689f7dac5cdf5ba8bdc9a9acdc95b95245f80a00
               // On insert nos données dans la table utilisateur
               $DB->insert("INSERT INTO users(username, email, password, date_inscription, token) VALUES(?, ?, ?, ?, ?)", array($pseudo, $email, $mdp, $date_inscription, $token));
-              $erreur = "Votre compte a bien été créé ! <a href=\"connexion.php\">Me connecter</a>";
+              $erreur = "Votre compte a bien été créé ! <a href=\"connexion\">Me connecter</a>";
               //Envoi d'un email de confirmation de compte
               $req = $DB->query("SELECT * FROM users WHERE email = ?", array($email));
               $req = $req->fetch();
@@ -37,7 +37,7 @@ if(isset($_POST['forminscription'])) {
               $mail_to = $req['email'];
               $subject = 'Prêts à raconter vos plus grandes aventures ?';
               $message = '<p>Bonjour ' . $req['username'] . ',</p><br>
-								<p>Veuillez confirmer votre compte <a href="'. $url . '/conf.php?id=' . $req['id'] . '&token=' . $token . '">Valider</a><p>';
+								<p>Veuillez confirmer votre compte <a href="'. $url . '/conf?id=' . $req['id'] . '&token=' . $token . '">Valider</a><p>';
               $headers = array(
 								'From' => 'Ceans de voyages.com <ceans@voyages.com>',
                 'Reply-To' => 'ceans@voyages.com',
