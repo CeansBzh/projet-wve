@@ -3,17 +3,17 @@
 		<?php
 			if (!isset($_SESSION['id'])) {
 		?>
-			<li><a href="index">Acceuil</a></li>
-			<li><a href="actualite">Actualité</a></li>
-			<li class="right"><a href="inscription">Inscription</a></li>
-			<li class="right"><a href="connexion">Connexion</a></li>
+			<li><a class="navigation active" href="index">Acceuil</a></li>
+			<li><a class="navigation" href="actualite">Actualité</a></li>
+			<li class="droite"><a class="navigation" href="inscription">Inscription</a></li>
+			<li class="droite"><a class="navigation" href="connexion">Connexion</a></li>
 		<?php
 			} else {
 		?>
-			<li><a href="index">Acceuil</a></li>
-			<li><a href="actualite">Actualité</a></li>
-			<li><a href="profil">Profil</a></li>
-			<li class="right"><a href="deconnexion">Déconnexion</a></li>
+			<li><a class="navigation active" href="index">Acceuil</a></li>
+			<li><a class="navigation" href="actualite">Actualité</a></li>
+			<li><a class="navigation" href="profil">Profil</a></li>
+			<li class="droite"><a class="navigation" href="deconnexion">Déconnexion</a></li>
 		<?php
 			}
 		?>

@@ -39,6 +39,16 @@ main {
   height: 100%;
 }
 
+a {
+	text-decoration: none;
+	color: #006157;
+	font-weight: 700;
+}
+
+a:hover, button {
+	cursor: pointer;
+}
+
 /*Css des boutons de redirections */
 
 a > button {
@@ -115,16 +125,21 @@ li a:hover:not(.active) {
 }
 
 .active {
-  background-color: #4CAF50;
+  background-color: #ffc107;
+	color: #333333;
 }
 
-.right {
+.droite {
   float: right;
 }
 
 @media screen and (max-width: 600px) {
   nav > ul > li {float: none;}
-	nav > ul > li.right {float: none;}
+	nav > ul > li.droite {float: none;}
+}
+
+.navigation {
+	font-weight: 400;
 }
 
 /*Css du main */
@@ -166,4 +181,85 @@ article {
 	font-size: 18px;
 	font-weight: 700;
 	font-style: italic;
+}
+
+/*Css du formulaire de connexion */
+
+.connexion {
+		max-width: 375px;
+    margin: 10vh auto;
+    border: 1px solid #ddd;
+    padding: 2rem;
+    background: #ffffff;
+		text-align: center;
+}
+
+.teteConnexion{
+		text-align: center;
+		margin-bottom : 2rem;
+}
+
+.groupeConnexion {
+    margin-bottom: 1rem;
+		text-align: left;
+}
+
+.parametreConnexion{
+		background: #fafafa;
+		border: 1px solid #eeeeee;
+		padding: 12px;
+		width: 100%;
+		min-width: 0;
+		box-sizing: border-box;
+  	max-width: 100%;
+}
+
+.logoConnexion {
+	margin-left: 15px;
+}
+
+.boutonConnexion{
+		background: #006157;
+		border: 1px solid #ddd;
+		color: #ffffff;
+		padding: 10px;
+		width: 85%;
+		text-transform: uppercase;
+		margin: 10px;
+}
+
+.boutonConnexion:hover{
+		background: #009688;
+}
+
+.piedConnexion{
+		text-align: center;
+}
+
+.erreurConnexion{
+		text-align: center;
+		color: #bf2020;
+		margin-bottom: 5px;
+		font-weight: 700;
+}
+
+.connexionValide{
+		text-align: center;
+		color: #0c8905;
+		margin-bottom: 5px;
+		font-weight: 700;
+}
+
+/*Css responsive */
+
+@media all and (max-width:600px){
+	main {
+	  width: 100vw;
+		margin: 0;
+	  padding: 0 0 10px;
+	}
+
+	nav {
+	  margin: 0;
+	}
 }

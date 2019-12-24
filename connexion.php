@@ -18,11 +18,11 @@
 
       if(empty($email)){ // Vérification qu'il y est bien un email de renseigné
         $valid = false;
-        $er_mail = "Il faut mettre un email";
+        $er_mail = "Sans email, on ne sait pas à qui on a affaire...";
       }
       if(empty($mdp)){ // Vérification qu'il y est bien un mot de passe de renseigné
         $valid = false;
-        $er_mdp = "Il faut mettre un mot de passe";
+        $er_mdp = "Il manque votre mot de passe ;)";
       }
         // On fait une requête pour savoir si le couple email / mot de passe existe bien car le email est unique !
         $req = $DB->query("SELECT * FROM users WHERE email = ? AND password = ?", array($email, crypt($mdp, '$6$rounds=5000$szgrzgerggegehrhhfshsh156s1@tfhs6h146-6GRS6G4¨^drfg4dg$')));
@@ -31,10 +31,10 @@
           // Si on a pas de résultat alors c'est qu'il n'y a pas d'utilisateur correspondant au couple email / mot de passe
           if ($req['id'] == ""){
             $valid = false;
-            $er_mail = "Le email ou le mot de passe est incorrecte";
+            $er_mail = "Email ou mot de passe incorrect... On ne sait pas lequel :/";
 					}elseif($req['confirmation_token'] == 0){ // On remet à zéro la demande de nouveau mot de passe s'il y a bien un couple email / mot de passe
 						$valid = false;
-            $er_mail = "Veuillez confirmer votre compte à partir de l'email qui vous a été envoyé";
+            $er_mail = "Veuillez confirmer votre compte grâce au mail qui vous a été envoyé lors de votre inscription.";
           }elseif($req['reset_pass'] == 1){ // On remet à zéro la demande de nouveau mot de passe s'il y a bien un couple email / mot de passe
             $DB->insert("UPDATE users SET reset_pass = 0 WHERE id = ?", array($req['id']));
           }
@@ -51,29 +51,34 @@
         }
     }
 ?>
-        <div>Se connecter</div>
-        <form method="post">
-          <?php
-          if (isset($er_mail)){
-            ?>
-            <div><?= $er_mail ?></div>
-            <?php
-            }
-          ?>
-
-            <input type="email" placeholder="Adresse email" name="email" value="<?php if(isset($email)){ echo $email; }?>" required>
-
-            <?php
-                if (isset($er_mdp)){
-            ?>
-                <div><?= $er_mdp ?></div>
-            <?php
-                }
-            ?>
-
-            <input type="password" placeholder="Mot de passe" name="mdp" value="<?php if(isset($mdp)){ echo $mdp; }?>" required>
-
-            <button type="submit" name="connexion">Se connecter</button>
-
-        </form>
+<form method="post" class="connexion">
+	<div class="teteConnexion">
+		<h3>Connexion</h3>
+		<p>Accédez à votre espace personnel</p>
+	</div>
+	<div class="groupeConnexion">
+		<?php
+		if (isset($er_mail)){
+			echo "<div class=\"erreurConnexion\">". $er_mail . "</div>";
+		}
+		?>
+		<label class="logoConnexion"><i class="fas fa-envelope"></i>
+		<input class="parametreConnexion" type="email" placeholder="adresse@exemple.fr" name="email" value="<?php if(isset($email)){ echo $email; }?>" required>
+		</label>
+	</div>
+	<div class="groupeConnexion">
+		<?php
+		if (isset($er_mdp)){
+			echo "<div class=\"erreurConnexion\">". $er_mdp . "</div>";
+		}
+		?>
+		<label class="logoConnexion"><i class="fas fa-lock"></i>
+		<input class="parametreConnexion" type="password" placeholder="Mot de passe" name="mdp" value="<?php if(isset($mdp)){ echo $mdp; }?>" required>
+		</label>
+	</div>
+	<button class="boutonConnexion" type="submit" name="connexion">Se connecter</button>
+	<div class="piedConnexion">
+		Pas de compte ? <a href="inscription">S'inscrire</a>
+	</div>
+</form>
 <?php include('parts/footer.php'); //on inclus le footer?>
