@@ -33,10 +33,19 @@ h1, h2, p {
 main {
   position: relative;
   margin: auto;
-  padding: 0 50px 10px;
+  padding: 0 0 10px;
   width: 65vw;
   background-color: #fff;
   height: 100%;
+}
+
+img {
+    max-width:100%;
+    height:auto;
+}
+
+.corps {
+	padding: 10px 25px 10px;
 }
 
 a {
@@ -47,6 +56,34 @@ a {
 
 a:hover, button {
 	cursor: pointer;
+}
+
+.erreur{
+		text-align: center;
+		color: #bf2020;
+		margin-bottom: 5px;
+		font-weight: 700;
+}
+
+.valide{
+		text-align: center;
+		color: #0c8905;
+		margin-bottom: 5px;
+		font-weight: 700;
+}
+
+.boutonAction {
+	background: #ffc107;
+	border: 1px solid #333;
+	color: #333;
+	padding: 10px;
+	width: 50%;
+	text-transform: uppercase;
+	margin: 10px;
+}
+
+.boutonAction:hover{
+		background: #ffc721;
 }
 
 /*Css des boutons de redirections */
@@ -90,14 +127,35 @@ a > button:active{
 	color: #FFF;
 }
 
+/*Css de la bannière*/
+
+.banniere {
+	background-image:url(images/image.png);
+	background-size:cover;
+	background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+	padding: 70px 30px 80px;
+	height: 250px;
+	font-size: 25px;
+	display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banniere > h1 {
+	font-size: 60px;
+	padding-bottom: 25px;
+}
+
 /*Css de la barre de navigation navbar */
 
 nav {
 	position: -webkit-sticky; /* Safari */
 	position: sticky;
 	top: 0;
-  margin: 0 -50px;
-	padding: -15px 0 0;
+  margin: 0;
+	padding: 0;
 }
 
 nav > ul {
@@ -236,20 +294,6 @@ article {
 		text-align: center;
 }
 
-.erreurConnexion{
-		text-align: center;
-		color: #bf2020;
-		margin-bottom: 5px;
-		font-weight: 700;
-}
-
-.connexionValide{
-		text-align: center;
-		color: #0c8905;
-		margin-bottom: 5px;
-		font-weight: 700;
-}
-
 /*Css responsive */
 
 @media all and (max-width:600px){
@@ -261,5 +305,17 @@ article {
 
 	nav {
 	  margin: 0;
+	}
+
+	.banniere {
+		padding: 30px 15px 40px;
+		display: block;
+	  text-align: center;
+		padding-bottom: 60px;
+	}
+
+	.banniere > h1 {
+		font-size: 2em;
+		padding-bottom: 25px;
 	}
 }

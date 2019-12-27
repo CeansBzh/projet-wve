@@ -21,17 +21,17 @@
 
       if(empty($titre)){
         $valid = false;
-        $er_titre = ("Il faut mettre un titre");
+        $er_titre = ("Veuillez renseigner le titre de votre article");
       }
 
       if(empty($contenu)){
         $valid = false;
-        $er_contenu = ("Il faut mettre un contenu");
+        $er_contenu = ("Veuillez renseigner le contenu de votre article");
       }
 
       if(empty($categorie)){
         $valid = false;
-        $er_categorie = "Le thème ne peut pas être vide";
+        $er_categorie = "Veuillez une catégorie";
       }else{
         // On vérifit que la catégorie existe
         $verif_cat = $DB->query("SELECT id, titre FROM categorie WHERE id = ?", array($categorie));
@@ -39,7 +39,7 @@
 
         if (!isset($verif_cat['id'])){
           $valid = false;
-          $er_categorie = "Ce thème n'existe pas";
+          $er_categorie = "Cette catégorie n'existe pas";
         }
       }
 
@@ -59,7 +59,7 @@
       	// S'il y a une erreur sur le nom alors on affiche
         if (isset($er_categorie)){
       ?>
-        <div class="er-msg"><?= $er_categorie ?></div>
+        <div class="erreur"><?= $er_categorie ?></div>
       <?php
         }
     	?>
@@ -92,25 +92,25 @@
               <?php
                 if (isset($er_titre)){
                 ?>
-                  <div class="er-msg"><?= $er_titre ?></div>
+                  <div class="erreur"><?= $er_titre ?></div>
                 <?php
                 }
               ?>
-              <div class="form-group">
+              <div class="">
                  <input class="form-control" type="text" placeholder="Votre titre" name="titre" value="<?php if(isset($titre)){ echo $titre; }?>">
               </div>
               <?php
                 if (isset($er_contenu)){
                   ?>
-                    <div class="er-msg"><?= $er_contenu ?></div>
+                    <div class="erreur"><?= $er_contenu ?></div>
                   <?php
                   }
               ?>
-              <div class="form-group">
+              <div class="">
                 <textarea class="form-control" rows="3" placeholder="Écrivez votre article" name="contenu"><?php if(isset($contenu)){ echo $contenu; }?></textarea>
               </div>
-              <div class="form-group">
-                <button class="btn btn-primary" type="submit" name="creer-article">Envoyer</button>
+              <div class="">
+                <button type="submit" name="creer-article">Envoyer</button>
               </div>
             </form>
 <?php include('parts/footer.php'); ?>

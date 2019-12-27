@@ -78,11 +78,11 @@ if(isset($_POST['forminscription'])) {
 	</div>
 	<?php
 	if (isset($erreur)){
-		echo "<div class=\"erreurConnexion\">". $erreur . "</div>";
+		echo "<div class=\"erreur\">". $erreur . "</div>";
 	}
 
 	if (isset($valide)){
-		echo "<div class=\"connexionValide\">". $valide . "</div>";
+		echo "<div class=\"valide\">". $valide . "</div>";
 	}
 	?>
 	<div class="groupeConnexion">

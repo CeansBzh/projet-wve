@@ -3,3 +3,6 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 # On peut enlever le .php et renommer les pages comme on le souhaite
 RewriteRule ^([^\.]+)$ $1.php [L]
+# redirection ancien url => nouveau url
+RewriteCond %{HTTP_HOST} !www.ceans.cf
+RewriteRule ^(.*)$ https://www.ceans.cf%{REQUEST_URI} [L,R=301]

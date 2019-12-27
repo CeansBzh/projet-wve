@@ -59,7 +59,7 @@
 	<div class="groupeConnexion">
 		<?php
 		if (isset($er_mail)){
-			echo "<div class=\"erreurConnexion\">". $er_mail . "</div>";
+			echo "<div class=\"erreur\">". $er_mail . "</div>";
 		}
 		?>
 		<label class="logoConnexion"><i class="fas fa-envelope"></i>
@@ -69,7 +69,7 @@
 	<div class="groupeConnexion">
 		<?php
 		if (isset($er_mdp)){
-			echo "<div class=\"erreurConnexion\">". $er_mdp . "</div>";
+			echo "<div class=\"erreur\">". $er_mdp . "</div>";
 		}
 		?>
 		<label class="logoConnexion"><i class="fas fa-lock"></i>

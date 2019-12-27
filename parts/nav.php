@@ -11,7 +11,7 @@
 			} else {
 		?>
 			<li><a class="navigation active" href="index">Acceuil</a></li>
-			<li><a class="navigation" href="actualite">Actualité</a></li>
+			<li><a class="navigation" href="actualite">Actualités</a></li>
 			<li><a class="navigation" href="profil">Profil</a></li>
 			<li class="droite"><a class="navigation" href="deconnexion">Déconnexion</a></li>
 		<?php
