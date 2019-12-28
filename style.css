@@ -151,54 +151,124 @@ a > button:active{
 /*Css de la barre de navigation navbar */
 
 nav {
-	position: -webkit-sticky; /* Safari */
+    background: #333;
+	padding: 5px 20px;
+	position: -webkit-sticky;
 	position: sticky;
-	top: 0;
-  margin: 0;
-	padding: 0;
 }
-
-nav > ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
+ul {
+    list-style-type: none;
 }
-
-nav > ul > li {
-  float: left;
+a:hover {
+    text-decoration: underline;
 }
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+.menu li {
+    font-size: 16px;
+    padding: 15px 5px;
+    white-space: nowrap;
 }
-
-li a:hover:not(.active) {
-  background-color: #111;
+.toggle a {
+    font-size: 20px;
 }
-
-.active {
-  background-color: #ffc107;
-	color: #333333;
+.button.secondary {
+    border-bottom: 1px #444 solid;
 }
-
-.droite {
-  float: right;
-}
-
-@media screen and (max-width: 600px) {
-  nav > ul > li {float: none;}
-	nav > ul > li.droite {float: none;}
-}
-
-.navigation {
+li > a {
 	font-weight: 400;
+	color: white;
 }
+
+/* Mobile menu */
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+	align-items: center;
+	padding-left: 0;
+}
+.toggle {
+    order: 1;
+}
+.item.button {
+    order: 2;
+}
+.item {
+    width: 100%;
+    text-align: center;
+    order: 3;
+    display: none;
+}
+.item.visible {
+    display: block;
+}
+
+/* Tablet menu */
+@media all and (min-width: 600px) {
+    .menu {
+        justify-content: center;
+    }
+    .logo {
+        flex: 1;
+    }
+    .toggle {
+        flex: 1;
+        text-align: right;
+    }
+    .item.button {
+        width: auto;
+        order: 1;
+        display: block;
+    }
+    .toggle {
+        order: 2;
+    }
+    .button.secondary {
+        border: 0;
+    }
+    .button a {
+        padding: 7.5px 15px;
+        background: teal;
+        border: 1px #006d6d solid;
+    }
+    .button.secondary a {
+        background: transparent;    
+    }
+    .button a:hover {
+        text-decoration: none;
+    }
+    .button:not(.secondary) a:hover {
+        background: #006d6d;
+        border-color: #005959;
+    }
+    .button.secondary a:hover {
+        color: #ddd;
+    } 
+}
+
+/* Desktop menu */
+@media all and (min-width: 900px) {
+    .item {
+        display: block;
+        width: auto;
+    }
+    .toggle {
+        display: none;
+    }
+    .item {
+        order: 0;
+    }
+    .button {
+        order: 1;
+    }
+    .menu li {
+        padding: 15px 10px;
+    }
+    .menu li.button {
+        padding-right: 0;
+    }
+}
+
+/*Fin du css navbar */
 
 /*Css du main */
 

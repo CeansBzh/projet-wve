@@ -1,21 +1,20 @@
 <nav>
-	<ul>
+    <ul class="menu">
+        <li class="item"><a href="index">Acceuil</a></li>
+		<li class="item"><a href="actualite">Actualité</a></li>
 		<?php
 			if (!isset($_SESSION['id'])) {
 		?>
-			<li><a class="navigation active" href="index">Acceuil</a></li>
-			<li><a class="navigation" href="actualite">Actualité</a></li>
-			<li class="droite"><a class="navigation" href="inscription">Inscription</a></li>
-			<li class="droite"><a class="navigation" href="connexion">Connexion</a></li>
+        <li class="item button"><a href="connexion">Connexion</a></li>
+		<li class="item button secondary"><a href="Inscription">Inscription</a></li>
 		<?php
 			} else {
 		?>
-			<li><a class="navigation active" href="index">Acceuil</a></li>
-			<li><a class="navigation" href="actualite">Actualités</a></li>
-			<li><a class="navigation" href="profil">Profil</a></li>
-			<li class="droite"><a class="navigation" href="deconnexion">Déconnexion</a></li>
+		<li class="item button"><a href="profil">Profil</a></li>
+		<li class="item button secondary"><a href="deconnexion">Déconnexion</a></li>
 		<?php
 			}
 		?>
-	</ul>
+        <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
+    </ul>
 </nav>
