@@ -3,3 +3,4 @@ cache/*
 *.spc
 /cache/*
 .htaccess
+.htaccess
