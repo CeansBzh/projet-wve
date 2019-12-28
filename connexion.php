@@ -22,7 +22,7 @@
       }
       if(empty($mdp)){ // Vérification qu'il y est bien un mot de passe de renseigné
         $valid = false;
-        $er_mdp = "Il manque votre mot de passe ;)";
+        $er_mdp = "Il manque votre mot de passe mais ne vous inquiétez pas, on ne le dira à personne ;)";
       }
         // On fait une requête pour savoir si le couple email / mot de passe existe bien car le email est unique !
         $req = $DB->query("SELECT * FROM users WHERE email = ? AND password = ?", array($email, crypt($mdp, '$6$rounds=5000$szgrzgerggegehrhhfshsh156s1@tfhs6h146-6GRS6G4¨^drfg4dg$')));
@@ -34,7 +34,7 @@
             $er_mail = "Email ou mot de passe incorrect... On ne sait pas lequel :/";
 					}elseif($req['confirmation_token'] == 0){ // On remet à zéro la demande de nouveau mot de passe s'il y a bien un couple email / mot de passe
 						$valid = false;
-            $er_mail = "Veuillez confirmer votre compte grâce au mail qui vous a été envoyé lors de votre inscription.";
+            $er_mail = "Veuillez confirmer votre compte à l'aide du mail qui vous a été envoyé lors de votre inscription";
           }elseif($req['reset_pass'] == 1){ // On remet à zéro la demande de nouveau mot de passe s'il y a bien un couple email / mot de passe
             $DB->insert("UPDATE users SET reset_pass = 0 WHERE id = ?", array($req['id']));
           }

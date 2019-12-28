@@ -1,5 +1,6 @@
 <?php include('parts/header.php'); //on inclus le header?>
 <?php
+require_once('vendor/autoload.php');
 if(isset($_POST['forminscription'])) {
 	$pseudo = htmlspecialchars($_POST['pseudo']);
 	$email = htmlspecialchars($_POST['email']);
@@ -33,21 +34,33 @@ if(isset($_POST['forminscription'])) {
 	              			$valide = "Votre compte a bien été créé ! <a href=\"connexion\">Me connecter</a>";
 	            			//Envoi d'un email de confirmation de compte
 	              			$req = $DB->query("SELECT * FROM users WHERE email = ?", array($email));
-	              			$req = $req->fetch();
-
-	              			$mail_to = $req['email'];
-	             			$subject = 'Prêts à raconter vos plus grandes aventures ?';
-	              			$message = '<p>Bonjour ' . $req['username'] . ',</p><br>
-									<p>Veuillez confirmer votre compte <a href="'. $url . '/conf?id=' . $req['id'] . '&token=' . $token . '">Valider</a><p>';
-	              			$headers = array(
-									'From' => 'Ceans de voyages.com <ceans@voyages.com>',
-	                				'Reply-To' => 'ceans@voyages.com',
-	                				'X-Mailer' => 'PHP/' . phpversion(),
-	                				'Content-type' => 'text/html; charset=utf-8',
-	                				'MIME-version' => '1.0',
-							);
+							$req = $req->fetch();
 							
-							mail($mail_to, $subject, $message, $headers);
+							//Sendinblue
+							// Configure API key authorization: api-key
+							$config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', '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');
+							
+							// Uncomment below line to configure authorization using: partner-key
+							// $config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('partner-key', 'YOUR_API_KEY');
+							
+							$apiInstance = new SendinBlue\Client\Api\SMTPApi(
+								// If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+								// This is optional, `GuzzleHttp\Client` will be used as default.
+								new GuzzleHttp\Client(),
+								$config
+							);
+							$sendSmtpEmail = new \SendinBlue\Client\Model\SendSmtpEmail(); // \SendinBlue\Client\Model\SendSmtpEmail | Values to send a transactional email
+							$sendSmtpEmail['to'] = array(array('email'=>$req['email'], 'name'=>$req['username']));
+							$sendSmtpEmail['templateId'] = 1;
+							$sendSmtpEmail['params'] = array('NAME'=>$req['username'], 'URL'=>$url . '/conf?id=' . $req['id'] . '&token=' . $token . '');
+							$sendSmtpEmail['headers'] = array('X-Mailin-custom'=>'MIME-version:1.0|Content-type:text/html; charset=utf-8');
+							
+							try {
+								$result = $apiInstance->sendTransacEmail($sendSmtpEmail);
+							} catch (Exception $e) {
+								echo 'Exception when calling SMTPApi->sendTransacEmail: ', $e->getMessage(), PHP_EOL;
+							}
+
 						} else {
 							$erreur = "Veuillez utiliser un mot de passe d'au moins 8 caractères";
 						}
