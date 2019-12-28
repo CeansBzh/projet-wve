@@ -22,7 +22,7 @@ if(isset($_POST['forminscription'])) {
 				}
 				if($valid != false) {
 					if($mdp == $mdp2) {
-						if($mdp < 8) {
+						if($mdp > 8) {
 	              			$mdp = crypt($mdp, '$6$rounds=5000$szgrzgerggegehrhhfshsh156s1@tfhs6h146-6GRS6G4¨^drfg4dg$');
 	              			$date_inscription = date('Y-m-d H:i:s');
 							// bin2hex(random_bytes($length))
@@ -31,7 +31,7 @@ if(isset($_POST['forminscription'])) {
 							// 39e9289a5b8328ecc4286da11076748716c41ec7fb94839a689f7dac5cdf5ba8bdc9a9acdc95b95245f80a00
 							// On insert nos données dans la table utilisateur
 							$DB->insert("INSERT INTO users(username, email, password, date_inscription, token) VALUES(?, ?, ?, ?, ?)", array($pseudo, $email, $mdp, $date_inscription, $token));
-	              			$valide = "Votre compte a bien été créé ! <a href=\"connexion\">Me connecter</a>";
+	              			$valide = "Votre compte a bien été créé ! Nous vous avons envoyé un mail de confirmation";
 	            			//Envoi d'un email de confirmation de compte
 	              			$req = $DB->query("SELECT * FROM users WHERE email = ?", array($email));
 							$req = $req->fetch();
