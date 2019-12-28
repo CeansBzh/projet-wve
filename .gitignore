@@ -1,0 +1,5 @@
+motdepasse.txt
+cache/*
+*.spc
+/cache/*
+.htaccess
