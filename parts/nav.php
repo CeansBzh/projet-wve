@@ -6,7 +6,7 @@
 			if (!isset($_SESSION['id'])) {
 		?>
         <li class="item button"><a href="connexion">Connexion</a></li>
-		<li class="item button secondary"><a href="Inscription">Inscription</a></li>
+		<li class="item button secondary"><a href="inscription">Inscription</a></li>
 		<?php
 			} else {
 		?>
@@ -15,6 +15,6 @@
 		<?php
 			}
 		?>
-        <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
+        <li class="toggle"><a href=""><i class="fas fa-bars"></i></a></li>
     </ul>
 </nav>
