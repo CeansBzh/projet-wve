@@ -1,6 +1,5 @@
-motdepasse.txt
 cache/*
 *.spc
 /cache/*
 .htaccess
-.htaccess
+connexionDB.php

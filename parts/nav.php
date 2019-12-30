@@ -1,7 +1,7 @@
 <nav>
     <ul class="menu">
-        <li class="item"><a href="index">Acceuil</a></li>
-		<li class="item"><a href="actualite">Actualité</a></li>
+        <li class="item"><a href="index">Accueil</a></li>
+		<li class="item"><a href="actualite">Actualités</a></li>
 		<?php
 			if (!isset($_SESSION['id'])) {
 		?>

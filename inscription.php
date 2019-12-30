@@ -38,7 +38,7 @@ if(isset($_POST['forminscription'])) {
 							
 							//Sendinblue
 							// Configure API key authorization: api-key
-							$config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', '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');
+							$config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', $sendinblueapi);
 							
 							// Uncomment below line to configure authorization using: partner-key
 							// $config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('partner-key', 'YOUR_API_KEY');

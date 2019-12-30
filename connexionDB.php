@@ -39,5 +39,7 @@
   // Faire une connexion à votre fonction
   $DB = new connexionDB();
 
-	$url = "http://localhost/projet-wve"
+  $url = "http://localhost/projet-wve";
+  
+  $sendinblueapi = "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";
 ?>
