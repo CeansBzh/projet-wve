@@ -55,7 +55,7 @@
 <div class="corps">
   <h1>Créer un (nouveau) carnet de voyage</h1>
 
-    <form method="post">
+    <form class="carnet" method="post">
       <section>
           <h2>Détails du voyage</h2>
           <p>
@@ -63,14 +63,14 @@
               <div class="erreur"><?= $er_titre ?></div>
             <?php } ?>
             <label for="titre">Titre:</label>
-            <input type="text" id="titre" placeholder="Voyage en Patagonie" name="titre" value="<?php if(isset($titre)){ echo $titre; }?>" maxlength="50">
+            <input class="entreeCarnet" type="text" id="titre" placeholder="Voyage en Patagonie" name="titre" value="<?php if(isset($titre)){ echo $titre; }?>" maxlength="50">
           </p>
           <p>
             <?php if (isset($er_description)){?>
               <div class="erreur"><?= $er_description ?></div>
             <?php } ?>
             <label for="description">Résumé:</label>
-            <textarea id="description" rows="3" placeholder="Un voyage incroyable entre amis, à l'autre bout du monde !" name="description" maxlength="255"><?php if(isset($description)){ echo $description; }?></textarea>
+            <textarea class="entreeCarnet" id="description" rows="3" placeholder="Un voyage incroyable entre amis, à l'autre bout du monde ! (255 caractères maximum)" name="description" maxlength="255"><?php if(isset($description)){ echo $description; }?></textarea>
           </p>
       </section>
       <section>
@@ -80,16 +80,14 @@
           <?php } ?>
           <p>
             <label for="date_debut">Date de début:</label>
-            <input type="date" id="date_debut" name="date_debut" min="<?php echo $date_ajd ?>" value="<?php echo $date_voyage ?>">
+            <input class="entreeCarnet" type="date" id="date_debut" name="date_debut" min="<?php echo $date_ajd ?>" value="<?php echo $date_voyage ?>">
           </p>
           <p>
             <label for="date_fin">Date de fin:</label>
-            <input type="date" id="date_fin" name="date_fin">
+            <input class="entreeCarnet" type="date" id="date_fin" name="date_fin">
           </p>
       </section>
-      <section>
-          <button type="submit" name="creer-carnet">Ajouter mon voyage</button>
-      </section>
+          <button class="entreeCarnet boutonAction" type="submit" name="creer-carnet">Ajouter mon voyage</button>
     </form>
   </div>
 <?php include('parts/footer.php'); ?>

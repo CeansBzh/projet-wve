@@ -15,6 +15,6 @@
 		<?php
 			}
 		?>
-        <li class="toggle"><a href=""><i class="fas fa-bars"></i></a></li>
+        <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
     </ul>
 </nav>

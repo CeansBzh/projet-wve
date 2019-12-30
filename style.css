@@ -27,7 +27,7 @@ header {
 }
 
 h1, h2, p {
-  margin: 0;
+  margin: 5px 0 10px;
 }
 
 main {
@@ -45,7 +45,7 @@ img {
 }
 
 .corps {
-	padding: 10px 35px 10px;
+	padding: 20px 10vw 10px;
 }
 
 a {
@@ -73,6 +73,15 @@ a:hover, button {
 		font-weight: 700;
 }
 
+button, input, select, textarea {
+	font-family : inherit;
+	font-size   : 100%;
+}
+
+textarea {
+	resize: vertical;
+}
+
 .boutonAction {
 	background: #ffc107;
 	border: 1px solid #333;
@@ -81,6 +90,7 @@ a:hover, button {
 	width: 50%;
 	text-transform: uppercase;
 	margin: 10px;
+	font-size: medium;
 }
 
 .boutonAction:hover{
@@ -312,7 +322,7 @@ article {
 	font-style: italic;
 }
 
-/*Css du formulaire de connexion */
+/*Css du formulaire de connexion/inscription */
 
 .connexion {
 		max-width: 375px;
@@ -365,6 +375,15 @@ article {
 		text-align: center;
 }
 
+/*Css du formulaire de creation de carnets*/
+
+.entreeCarnet {
+	width: 100%;
+	padding: 8px 20px;
+	box-sizing: border-box;
+	margin: 10px;
+}
+
 /*Css responsive */
 
 @media all and (max-width:600px){
@@ -392,5 +411,9 @@ article {
 
 	.corps {
 		padding: 10px 25px 10px;
+	}
+
+	.boutonAction {
+		width: initial;
 	}
 }

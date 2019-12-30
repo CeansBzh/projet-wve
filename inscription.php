@@ -22,8 +22,8 @@ if(isset($_POST['forminscription'])) {
 				}
 				if($valid != false) {
 					if($mdp == $mdp2) {
-						if($mdp > 8) {
-	              			$mdp = crypt($mdp, '$6$rounds=5000$szgrzgerggegehrhhfshsh156s1@tfhs6h146-6GRS6G4¨^drfg4dg$');
+						if($mdp >= 8) {
+	              			$mdp = crypt($mdp, '$6$rounds=5000$' . $clesecrete);
 	              			$date_inscription = date('Y-m-d H:i:s');
 							// bin2hex(random_bytes($length))
 							$token = bin2hex(random_bytes(12));
