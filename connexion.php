@@ -32,7 +32,7 @@
           if ($req['id'] == ""){
             $valid = false;
             $er_mail = "Email ou mot de passe incorrect... On ne sait pas lequel :/";
-					}elseif($req['confirmation_token'] == 0){ // On remet à zéro la demande de nouveau mot de passe s'il y a bien un couple email / mot de passe
+					}elseif($req['confirmation_token'] == 0){ // Si le compte n'est pas confirmé par mail alors pas de connexion
 						$valid = false;
             $er_mail = "Veuillez confirmer votre compte à l'aide du mail qui vous a été envoyé lors de votre inscription";
           }elseif($req['reset_pass'] == 1){ // On remet à zéro la demande de nouveau mot de passe s'il y a bien un couple email / mot de passe
@@ -54,7 +54,7 @@
 <form method="post" class="connexion">
 	<div class="teteConnexion">
 		<h3>Connexion</h3>
-		<p>Accédez à votre espace personnel</p>
+		<p>Accédez à votre espace personnel et profitez de toutes les fonctionnalités</p>
 	</div>
 	<div class="groupeConnexion">
 		<?php
@@ -78,7 +78,7 @@
 	</div>
 	<button class="boutonConnexion" type="submit" name="connexion">Se connecter</button>
 	<div class="piedConnexion">
-		Pas de compte ? <a href="inscription">S'inscrire</a>
+    <a href="reinitialisation">Mot de passe oublié ?</a>
 	</div>
 </form>
 <?php include('parts/footer.php'); //on inclus le footer?>

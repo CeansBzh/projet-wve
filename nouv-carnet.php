@@ -14,40 +14,31 @@
     if (isset($_POST['creer-carnet'])){
       $titre  = (string) htmlentities(trim($titre));
 			$description = (string) htmlentities(trim($description));
-      $date_debut = (int) htmlentities(trim($date_debut));
-      $date_fin = (int) htmlentities(trim($date_fin));
+      $date_debut = date('Y-m-d', strtotime($_POST['date_debut']));
+      $date_fin = date('Y-m-d', strtotime($_POST['date_fin']));
 
       if(empty($titre)){
         $valid = false;
         $er_titre = ("Veuillez renseigner le titre de votre carnet de voyage");
       }
 
-      if(empty($contenu)){
+      if(empty($description)){
         $valid = false;
-        $er_contenu = ("Veuillez renseigner la description de votre carnet de voyage");
+        $er_description = ("Veuillez renseigner la description de votre carnet de voyage");
       }
 
-      if(empty($categorie)){
+      if(strtotime($date_debut) > strtotime($date_fin)){
         $valid = false;
-        $er_categorie = "Veuillez une catégorie";
-      }else{
-
-        // On vérifit que la catégorie existe
-        $verif_cat = $DB->query("SELECT id, titre FROM categorie WHERE id = ?", array($categorie));
-				$verif_cat = $verif_cat->fetch();
-
-        if (!isset($verif_cat['id'])){
-          $valid = false;
-          $er_categorie = "Cette catégorie n'existe pas";
-        }
+        $er_date = ("Comptez vous revenir de voyage avant d'être parti ? ;)");
       }
 
       if($valid){
-        $date_creation = date('Y-m-d H:i:s');
-        $DB->insert("INSERT INTO blog (id_user, titre, text, date_creation, id_categorie) VALUES (?, ?, ?, ?, ?)", array($_SESSION['id'], $titre, $contenu, $date_creation, $categorie));
-
-        header('Location: carnets');
-        exit;
+			  if (isset($_SESSION['id'])){
+          $date_creation = date('Y-m-d H:i:s');
+          $DB->insert("INSERT INTO carnets (id_user, date_creation, titre, date_debut, date_fin, description) VALUES (?, ?, ?, ?, ?, ?)", array($_SESSION['id'], $date_creation, $titre, $date_debut, $date_fin, $description));
+          header('Location: carnets');
+          exit;
+        }
       }
     }
   }
@@ -57,7 +48,7 @@
 
     <form class="carnet" method="post">
       <section>
-          <h2>Détails du voyage</h2>
+          <h2>Détails</h2>
           <p>
             <?php if (isset($er_titre)){?>
               <div class="erreur"><?= $er_titre ?></div>
@@ -80,14 +71,24 @@
           <?php } ?>
           <p>
             <label for="date_debut">Date de début:</label>
-            <input class="entreeCarnet" type="date" id="date_debut" name="date_debut" min="<?php echo $date_ajd ?>" value="<?php echo $date_voyage ?>">
+            <input class="entreeCarnet" type="date" id="date_debut" name="date_debut" min="<?php echo $date_ajd ?>" value="<?php if(isset($date_debut)){ echo $date_debut; }else{ echo $date_voyage; }?>">
           </p>
           <p>
             <label for="date_fin">Date de fin:</label>
             <input class="entreeCarnet" type="date" id="date_fin" name="date_fin">
           </p>
       </section>
-          <button class="entreeCarnet boutonAction" type="submit" name="creer-carnet">Ajouter mon voyage</button>
+      <?php if (isset($_SESSION['id'])){ ?>
+        <button class="entreeCarnet boutonAction" type="submit" name="creer-carnet">Ajouter mon voyage</button>
+      <?php }else{ ?>
+        <button class="entreeCarnet boutonAction popupModalOuvre" type='button'>Me connecter et ajouter mon voyage</button>
+      <?php } ?>
     </form>
+    <div class="modal">
+        <div class="modal-content">
+            <span class="popupModalFerme"><i class="fas fa-times"></i></span>
+            <h1>Le mec qui lis ça est super con</h1>
+        </div>
+    </div>
   </div>
 <?php include('parts/footer.php'); ?>

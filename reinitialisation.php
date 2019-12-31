@@ -27,28 +27,33 @@
             // On génère un mot de passe à l'aide de la fonction RAND de PHP
             $new_pass = rand();
             // Le mieux serait de générer un nombre aléatoire entre 7 et 10 caractères (Lettres et chiffres)
-            $new_pass_crypt = crypt($new_pass, '$6$rounds=5000$szgrzgerggegehrhhfshsh156s1@tfhs6h146-6GRS6G4¨^drfg4dg$');
+            $new_pass_crypt = crypt($new_pass, '$6$rounds=5000$' . $clesecrete);
             // $new_pass_crypt = crypt($new_pass, "VOTRE CLÉ UNIQUE DE CRYPTAGE DU MOT DE PASSE");
 
-            $objet = 'Nouveau mot de passe';
-            $to = $req['email'];
-
-            //===== Création du header du email.
-            $header = "From: Ceans de voyages.com <ceans@voyages.com> \n";
-            $header .= "Reply-To: ".$to."\n";
-            $header .= "MIME-version: 1.0\n";
-            $header .= "Content-type: text/html; charset=utf-8\n";
-            $header .= "Content-Transfer-Encoding: 8bit";
-
-            //===== Contenu de votre message
-            $message = '<html><body>';
-            $message .= "<h1 style='text-align: center'>Réinitialisation de votre mot de passe</h1>";
-            $message .= "<p style='text-align: center; font-size: 18px'><b>Bonjour " .$req['username']."</b>,</p><br/>";
-            $message .= "<p style='text-align: center'><i><b>Votre nouveau mot de passe est : </b></i>".$new_pass."</p><br/>";
-            $message .= "<p style='text-align: center'>Je vous conseille vivement de le changer à votre prochaine connexion !</p><br/>";
-            $message .= '</body></html>';
-            //===== Envoi du email
-            mail($to, $objet, $message, $header);
+            //Sendinblue
+            // Configure API key authorization: api-key
+            $config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', $sendinblueapi);
+            
+            // Uncomment below line to configure authorization using: partner-key
+            // $config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('partner-key', 'YOUR_API_KEY');
+            
+            $apiInstance = new SendinBlue\Client\Api\SMTPApi(
+              // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+              // This is optional, `GuzzleHttp\Client` will be used as default.
+              new GuzzleHttp\Client(),
+              $config
+            );
+            $sendSmtpEmail = new \SendinBlue\Client\Model\SendSmtpEmail(); // \SendinBlue\Client\Model\SendSmtpEmail | Values to send a transactional email
+            $sendSmtpEmail['to'] = array(array('email'=>$req['email'], 'name'=>$req['username']));
+            $sendSmtpEmail['templateId'] = 5;
+            $sendSmtpEmail['params'] = array('NAME'=>$req['username'], 'URL'=>$url . '/conf?id=' . $req['id'] . '&token=' . $token . '');
+            $sendSmtpEmail['headers'] = array('X-Mailin-custom'=>'MIME-version:1.0|Content-type:text/html; charset=utf-8');
+            
+            try {
+              $result = $apiInstance->sendTransacEmail($sendSmtpEmail);
+            } catch (Exception $e) {
+              echo 'Exception when calling SMTPApi->sendTransacEmail: ', $e->getMessage(), PHP_EOL;
+            }
 
             $DB->insert("UPDATE users SET password = ?, reset_pass = 1 WHERE email = ?", array($new_pass_crypt, $req['email']));
           }
@@ -59,12 +64,12 @@
     }
   }
 ?>
-        <div>Mot de passe oublié</div>
-        <form method="post">
-            <?php if (isset($er_mail)){ ?>
-                <div><?= $er_mail ?></div>
-            <?php } ?>
-            <input type="email" placeholder="Adresse email" name="email" value="<?php if(isset($email)){ echo $email; }?>" required>
-            <button type="submit" name="oublie">Envoyer</button>
-        </form>
+<div>Mot de passe oublié</div>
+  <form method="post">
+    <?php if (isset($er_mail)){ ?>
+      <div><?= $er_mail ?></div>
+    <?php } ?>
+    <input type="email" placeholder="Adresse email" name="email" value="<?php if(isset($email)){ echo $email; }?>" required>
+    <button type="submit" name="oublie">Envoyer</button>
+  </form>
 <?php include('parts/footer.php'); //on inclus le footer?>
