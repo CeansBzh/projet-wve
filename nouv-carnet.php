@@ -1,4 +1,5 @@
 <?php include('parts/header.php'); ?>
+<?php include('php/connexionData.php'); //on inclus le code de connexion?>
 <?php
 
   $date_ajd = date('Y-m-d');
@@ -27,9 +28,11 @@
         $er_description = ("Veuillez renseigner la description de votre carnet de voyage");
       }
 
-      if(strtotime($date_debut) > strtotime($date_fin)){
-        $valid = false;
-        $er_date = ("Comptez vous revenir de voyage avant d'être parti ? ;)");
+      if(strtotime($date_fin) != -3600){
+        if(strtotime($date_debut) > strtotime($date_fin)){
+          $valid = false;
+          $er_date = ("Comptez vous revenir de voyage avant d'être parti ? ;)");
+        }
       }
 
       if($valid){
@@ -45,7 +48,6 @@
 ?>
 <div class="corps">
   <h1>Créer un (nouveau) carnet de voyage</h1>
-
     <form class="carnet" method="post">
       <section>
           <h2>Détails</h2>
@@ -75,7 +77,8 @@
           </p>
           <p>
             <label for="date_fin">Date de fin:</label>
-            <input class="entreeCarnet" type="date" id="date_fin" name="date_fin">
+            <input class="entreeCarnet" type="date" id="date_fin" name="date_fin" min="<?php echo $date_ajd ?>" value="<?php if(isset($date_fin)){ echo $date_fin; }else{ echo ''; }?>">
+            <button id="reset" class="boutonReset" type='button'>Je ne sais pas</button>
           </p>
       </section>
       <?php if (isset($_SESSION['id'])){ ?>
@@ -87,8 +90,73 @@
     <div class="modal">
         <div class="modal-content">
             <span class="popupModalFerme"><i class="fas fa-times"></i></span>
-            <h1>Le mec qui lis ça est super con</h1>
+            <form method="post" class="connexion connexionModale">
+              <div class="teteConnexion">
+                <h3>Connexion</h3>
+                <p>Accédez à votre espace personnel et profitez de toutes les fonctionnalités</p>
+              </div>
+              <div class="groupeConnexion">
+                <?php
+                if (isset($er_mail)){
+                  echo "<div class=\"erreur\">". $er_mail . "</div>";
+                }
+                ?>
+                <label class="logoConnexion"><i class="fas fa-envelope"></i>
+                <input class="parametreConnexion" type="email" placeholder="adresse@exemple.fr" name="email" value="<?php if(isset($email)){ echo $email; }?>" required>
+                </label>
+              </div>
+              <div class="groupeConnexion">
+                <?php
+                if (isset($er_mdp)){
+                  echo "<div class=\"erreur\">". $er_mdp . "</div>";
+                }
+                ?>
+                <label class="logoConnexion"><i class="fas fa-lock"></i>
+                <input class="parametreConnexion" type="password" placeholder="Mot de passe" name="mdp" value="<?php if(isset($mdp)){ echo $mdp; }?>" required>
+                </label>
+              </div>
+              <button class="boutonConnexion" type="submit" name="connexion">Se connecter</button>
+              <div class="piedConnexion">
+                <a href="reinitialisation">Mot de passe oublié ?</a>
+              </div>
+            </form>
         </div>
     </div>
   </div>
+<script type="text/javascript">
+  document.getElementById('reset').onclick= function() {
+    var field= document.getElementById('date_fin');
+    field.value= field.defaultValue;
+  };
+  
+  // Run on page load
+  window.onload = function() {
+    
+    // If sessionStorage is storing default values (ex. name), exit the function and do not restore data
+    if (sessionStorage.getItem('titre') == null) {
+      return;
+    }
+
+    // If values are not blank, restore them to the fields
+    var name = sessionStorage.getItem('titre');
+    if (name !== null) $('#titre').val(name);
+    
+    var email = sessionStorage.getItem('description');
+    if (email !== null) $('#description').val(email);
+
+    var subject= sessionStorage.getItem('date_debut');
+    if (subject!== null) $('#date_debut').val(subject);
+
+    var message= sessionStorage.getItem('date_fin');
+    if (message!== null) $('#date_fin').val(message);
+  }
+
+  // Before refreshing the page, save the form data to sessionStorage
+  window.onbeforeunload = function() {
+      sessionStorage.setItem("titre", $('#titre').val());
+      sessionStorage.setItem("description", $('#description').val());
+      sessionStorage.setItem("date_debut", $('#date_debut').val());
+      sessionStorage.setItem("date_fin", $('#date_fin').val());
+  }
+</script>
 <?php include('parts/footer.php'); ?>

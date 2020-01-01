@@ -326,12 +326,12 @@ article {
 /*Css du formulaire de connexion/inscription */
 
 .connexion {
-		max-width: 375px;
+	max-width: 375px;
     margin: 10vh auto;
     border: 1px solid #ddd;
     padding: 2rem;
     background: #ffffff;
-		text-align: center;
+	text-align: center;
 }
 
 .teteConnexion{
@@ -376,6 +376,10 @@ article {
 		text-align: center;
 }
 
+.connexionModale {
+    margin: 0 auto;
+}
+
 /*Css du formulaire de creation de carnets*/
 
 .entreeCarnet {
@@ -383,6 +387,11 @@ article {
 	padding: 8px 20px;
 	box-sizing: border-box;
 	margin: 10px;
+}
+
+.boutonReset {
+	margin:  0 0 10px 10px;
+	border: 1px solid #005959;
 }
 
 /*Css de la fenetre popup modale*/

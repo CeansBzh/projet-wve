@@ -31,3 +31,13 @@ function windowOnClick(event) {
 trigger.addEventListener("click", toggleModal);
 closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
+
+//Date de fin inconnue => réinitialisation du champ date
+
+
+
+$(function() {
+    $("#date_fin_inconnue").on("change", function() {
+        $("#date_fin").val("YYYY-MM-DD");
+    });
+});
