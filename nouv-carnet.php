@@ -128,7 +128,7 @@
     var field= document.getElementById('date_fin');
     field.value= field.defaultValue;
   };
-  
+
   // Run on page load
   window.onload = function() {
     
@@ -137,18 +137,20 @@
       return;
     }
 
-    // If values are not blank, restore them to the fields
-    var name = sessionStorage.getItem('titre');
-    if (name !== null) $('#titre').val(name);
-    
-    var email = sessionStorage.getItem('description');
-    if (email !== null) $('#description').val(email);
+    if(document.referrer == "<?php echo $url ?>/nouv-carnet"){
+        // If values are not blank, restore them to the fields
+        var name = sessionStorage.getItem('titre');
+        if (name !== null) $('#titre').val(name);
+        
+        var email = sessionStorage.getItem('description');
+        if (email !== null) $('#description').val(email);
 
-    var subject= sessionStorage.getItem('date_debut');
-    if (subject!== null) $('#date_debut').val(subject);
+        var subject= sessionStorage.getItem('date_debut');
+        if (subject!== null) $('#date_debut').val(subject);
 
-    var message= sessionStorage.getItem('date_fin');
-    if (message!== null) $('#date_fin').val(message);
+        var message= sessionStorage.getItem('date_fin');
+        if (message!== null) $('#date_fin').val(message);
+    }
   }
 
   // Before refreshing the page, save the form data to sessionStorage

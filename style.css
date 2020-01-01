@@ -439,6 +439,16 @@ article {
 
 /*Css responsive */
 
+/*Css tablettes */
+@media all and (max-width:900px){
+
+	.corps {
+		padding: 10px 0px 10px;
+	}
+
+}
+
+/*Css mobiles */
 @media all and (max-width:600px){
 	main {
 	  width: 100vw;
