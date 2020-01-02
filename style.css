@@ -98,6 +98,10 @@ textarea {
 		background: #ffc721;
 }
 
+.aligncenter {
+	text-align: center;
+}
+
 /*Css des boutons de redirections */
 
 a > button {

@@ -77,14 +77,17 @@
       }
     }
 ?>
-  <div>Mot de passe oublié</div>
-    <form method="post">
-    <?php if (isset($er_mail)){ ?>
-      <div><?= $er_mail ?></div>
-    <?php } ?>
-    <input type="email" placeholder="Adresse email" name="email" value="<?php if(isset($email)){ echo $email; }?>" required>
-    <button type="submit" name="oublie">Envoyer</button>
-  </form>
+  <div class="corps">
+    <h2>Mot de passe oublié</h2>
+    <p>En rentrant votre adresse email, vous débuterez le processus de réinitialisation de votre mot de passe. Nous vous enverrons un email qui vous dirigera vers la page où vous pourrez choisir un nouveau mot de passe.</p>
+      <form method="post" class="aligncenter">
+      <?php if (isset($er_mail)){ ?>
+        <div><?= $er_mail ?></div>
+      <?php } ?>
+      <input class="entreeCarnet" type="email" placeholder="Adresse email" name="email" value="<?php if(isset($email)){ echo $email; }?>" required>
+      <button  class="boutonReset" type="submit" name="oublie">Envoyer</button>
+    </form>
+  </div>
 <?php
   }elseif(isset($_GET['token']) AND !isset($_GET['section'])){
     if(isset($_SESSION['recup_email'])){
@@ -156,21 +159,23 @@
                 $er_mdp = "Veuillez rentrer un nouveau mot de passe !";
               }
             }
-          }else{
-            $er_mdp = "Veuillez choisir un nouveau mot de passe";
           }
         ?>
-          <h2>Choisissez un nouveau mot de passe</h2>
-          <form method="post">
-            <?php if (isset($er_mdp)){ ?>
-              <div class="erreur"><?= $er_mdp ?></div>
-            <?php } ?>
-            <label class="logoConnexion"><i class="fas fa-lock"></i>
-              <input class="parametreConnexion" type="password" placeholder="Votre mot de passe" id="mdp" name="mdp" required>
-            </label>
-            <input class="parametreConnexion" type="password" placeholder="Confirmez votre mot de passe" id="mdp2" name="mdp2" required>
-            <button type="submit" name="nouv">Envoyer</button>
-          </form>
+          <div class="corps">
+            <h2>Choisissez un nouveau mot de passe</h2>
+            <form method="post" class="aligncenter">
+              <?php if (isset($er_mdp)){ ?>
+                <div class="erreur"><?= $er_mdp ?></div>
+              <?php } ?>
+              <div class="groupeConnexion">
+              <label class="logoConnexion"><i class="fas fa-lock"></i>
+                <input class="parametreConnexion" type="password" placeholder="Votre mot de passe" id="mdp" name="mdp" required>
+              </label>
+              </div>
+              <input class="parametreConnexion" type="password" placeholder="Confirmez votre mot de passe" id="mdp2" name="mdp2" required>
+              <button class="boutonConnexion" type="submit" name="nouv">Envoyer</button>
+            </form>
+          </div>
         <?php
         }else{
           $er = "Ce lien n'est plus valide";
@@ -181,20 +186,22 @@
     }else{
       $er = "Ce lien n'est pas valide";
       if (isset($er)){ ?>
-        <div class="erreur"><?= $er ?></div>
+        <div class="corps">
+          <div class="erreur"><?= $er ?></div>
+        </div>
       <?php }
     }
   }elseif(!isset($_GET['token']) AND isset($_GET['section'])){
     if($_GET['section'] == 'email'){ ?>
-
-      <h2 class="valide">Un email vous a été envoyé</h2>
-      <p>Cet email contient un lien qui vous dirigera vers une page où vous pourrez changer de mot de passe. Faites toujours attention à choisir un mot de passe sécurisé.</p>
-
+      <div class="corps">
+        <h2 class="valide">Un email vous a été envoyé</h2>
+        <p>Cet email contient un lien qui vous dirigera vers une page où vous pourrez changer de mot de passe. Faites toujours attention à choisir un mot de passe sécurisé.</p>
+      </div>
     <?php }elseif($_GET['section'] == 'resetmdp'){ ?>
-
-      <h2 class="valide">Votre mot de passe a été changé</h2>
-      <p>Vous devrez désormais vous connecter avec votre nouveau mot de passe. Vous allez désormais être automatiquement redirigé vers la page de connexion...</p>
-
+      <div class="corps">
+        <h2 class="valide">Votre mot de passe a été changé</h2>
+        <p>Vous devrez désormais vous connecter avec votre nouveau mot de passe. Vous allez désormais être automatiquement redirigé vers la page de connexion...</p>
+      </div>
       <?php
       header("refresh:6;url=connexion");
 		  exit;
