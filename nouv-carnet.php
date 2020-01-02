@@ -139,19 +139,39 @@
 
 		if(document.referrer == "<?php echo $url ?>/nouv-carnet"){
 				// If values are not blank, restore them to the fields
-				var name = sessionStorage.getItem('titre');
-				if (name !== null) $('#titre').val(name);
+				var titre = sessionStorage.getItem('titre');
+				if (titre !== null) $('#titre').val(titre);
 				
-				var email = sessionStorage.getItem('description');
-				if (email !== null) $('#description').val(email);
+				var description = sessionStorage.getItem('description');
+				if (description !== null) $('#description').val(description);
 
-				var subject= sessionStorage.getItem('date_debut');
-				if (subject!== null) $('#date_debut').val(subject);
+				var date_debut= sessionStorage.getItem('date_debut');
+				if (date_debut!== null) $('#date_debut').val(date_debut);
 
-				var message= sessionStorage.getItem('date_fin');
-				if (message!== null) $('#date_fin').val(message);
+				var date_fin= sessionStorage.getItem('date_fin');
+				if (date_fin!== null) $('#date_fin').val(date_fin);
+		}
+  }
+  
+  // Popup modale
+  var modal = document.querySelector(".modal");
+	var trigger = document.querySelector(".popupModalOuvre");
+	var closeButton = document.querySelector(".popupModalFerme");
+
+	function toggleModal() {
+		modal.classList.toggle("show-modal");
+	}
+
+	function windowOnClick(event) {
+		if (event.target === modal) {
+			toggleModal();
 		}
 	}
+
+	trigger.addEventListener("click", toggleModal);
+	closeButton.addEventListener("click", toggleModal);
+	window.addEventListener("click", windowOnClick);
+
 
 	// Before refreshing the page, save the form data to sessionStorage
 	window.onbeforeunload = function() {

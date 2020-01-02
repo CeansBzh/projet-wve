@@ -12,29 +12,7 @@ $(function() {
     });
 });
 
-//Popup modal
-
-var modal = document.querySelector(".modal");
-var trigger = document.querySelector(".popupModalOuvre");
-var closeButton = document.querySelector(".popupModalFerme");
-
-function toggleModal() {
-    modal.classList.toggle("show-modal");
-}
-
-function windowOnClick(event) {
-    if (event.target === modal) {
-        toggleModal();
-    }
-}
-
-trigger.addEventListener("click", toggleModal);
-closeButton.addEventListener("click", toggleModal);
-window.addEventListener("click", windowOnClick);
-
 //Date de fin inconnue => réinitialisation du champ date
-
-
 
 $(function() {
     $("#date_fin_inconnue").on("change", function() {
