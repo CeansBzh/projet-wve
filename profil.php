@@ -6,14 +6,14 @@ if(!isset($_SESSION['id'])){
 	exit;
 }
 // On récupère les informations de l'utilisateur connecté
-$afficher_profil = $DB->query("SELECT * FROM users WHERE id = ?", array($_SESSION['id']));
-$afficher_profil = $afficher_profil->fetch();
+$req = $DB->query("SELECT * FROM users WHERE id = ?", array($_SESSION['id']));
+$req = $req->fetch();
 
 ?>
-<h2>Voici votre profil, <?= $afficher_profil['username']; ?></h2>
+<h2>Voici votre profil, <?= $req['username']; ?></h2>
 	<div>Informations de compte:</div>
 	<ul>
-		<li>Votre email est : <?= $afficher_profil['email'] ?></li>
-		<li>Votre compte a été créé le : <?= $afficher_profil['date_inscription'] ?></li>
+		<li>Votre email est : <?= $req['email'] ?></li>
+		<li>Votre compte a été créé le : <?= $req['date_inscription'] ?></li>
 	</ul>
 <?php include('parts/footer.php'); ?>

@@ -27,7 +27,7 @@
 	</div>
 	<button class="boutonConnexion" type="submit" name="connexion">Se connecter</button>
 	<div class="piedConnexion">
-    <a href="reinitialisation">Mot de passe oublié ?</a>
+    <a href="recuperation">Mot de passe oublié ?</a>
 	</div>
 </form>
 <?php include('parts/footer.php'); //on inclus le footer?>

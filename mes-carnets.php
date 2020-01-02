@@ -1,5 +1,6 @@
 <?php include('parts/header.php'); ?>
 <?php
+
 	$req = $DB->query("SELECT b.*, u.username, c.titre AS titre_cat FROM blog b
 		LEFT JOIN users u ON u.id = b.id_user
 		LEFT JOIN categorie c ON c.id_categorie = b.id_categorie
@@ -8,7 +9,7 @@
 	$req = $req->fetchAll();
 ?>
 <div class="corps">
-	<h1 class="titre">Dernières actualités</h1>
+	<h1 class="titre">Mes carnets de voyage</h1>
 
 	<?php
 			if (isset($_SESSION['id'])){
