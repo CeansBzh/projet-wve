@@ -39,7 +39,7 @@
   if(isset($info_mess)){
     echo $info_mess;
 		echo 'Redirection automatique vers la page d\'acceuil dans 3 secondes...';
-		header("refresh:3;url=/");
+		header("refresh:3;url=$url");
 		exit;
   }
 ?>

@@ -22,8 +22,7 @@
 	?>
 		<a href="nouv-carnet" role="button" aria-pressed="true"><button type="button">Créer un carnet</button></a>
 	<?php
-		}
-		foreach($req as $r){
+    }foreach($req as $r){
 	?>
 
   <div class="listeCarnets full-width">
