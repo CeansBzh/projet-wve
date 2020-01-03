@@ -1,5 +1,13 @@
-<?php include('parts/header.php'); //on inclus le header?>
-<?php include('php/connexionData.php'); //on inclus le code de connexion?>
+<?php 
+	include('parts/header.php'); //on inclus le header
+	include('php/connexionData.php'); //on inclus le code de connexion
+
+	if(isset($_SESSION['id'])){
+		header('Location: profil');
+		exit;
+	}
+?>
+
 <form method="post" class="connexion">
 	<div class="teteConnexion">
 		<h3>Connexion</h3>

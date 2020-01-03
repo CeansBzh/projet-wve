@@ -441,6 +441,42 @@ article {
 	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
+/* Css liste carnets */
+
+.listeCarnets {
+	background-color: lightgray;
+	margin-top: 20px;
+	border: #333 solid 1px;
+	height: 300px;
+	position: relative;
+	overflow: hidden;
+	color: #fff;
+	text-shadow: black 0px 0px 5px;
+}
+
+.descriptionCarnets {
+	position: absolute;
+  	bottom: 5px;
+	left: 10px;
+	font-weight: 400;
+}
+
+.descriptionCarnets > h2 {
+	font-weight: 400;
+}
+
+.imageCarnets {
+	object-fit: cover;
+	position: absolute;
+    left: -1000%;
+    right: -1000%;
+    top: -1000%;
+    bottom: -1000%;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+}
+
 /*Css responsive */
 
 /*Css tablettes */

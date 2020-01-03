@@ -47,7 +47,7 @@
 	}
 ?>
 <div class="corps">
-	<h1>Créer un (nouveau) carnet de voyage</h1>
+	<h1>Créer un carnet de voyage</h1>
 		<form method="post">
 			<section>
 					<h2>Détails</h2>

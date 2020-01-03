@@ -25,7 +25,7 @@
 			<!-- Article -->
 			<article itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
 				<div class="headerArticle">
-					<h1 class="titreArticle" itemprop="name headline"><?= $r['titre'] ?></h1>
+					<h2 class="titreArticle" itemprop="name headline"><?= $r['titre'] ?></h2>
 					<p class="dateArticle"><time datetime="<?= $r['date_creation'] ?>" itemprop="datePublished"><?= date_format(date_create($r['date_creation']), 'd/m/Y à H:i'); ?></time></p>
 				</div>
 					<div class="corpsArticle" itemprop="articleBody">

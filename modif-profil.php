@@ -1,11 +1,11 @@
 <?php include('parts/header.php'); //on inclus le header?>
 <?php
 	if (!isset($_SESSION['id'])){
-		header('Location: index');
+		header('Location: connexion');
 		exit;
 	}
 
-	// On récupère les informations de l'utilisateur connecte
+	// On récupère les informations de l'utilisateur connecté
 	$afficher_profil = $DB->query("SELECT * FROM users WHERE id = ?", array($_SESSION['id']));
 	$afficher_profil = $afficher_profil->fetch();
 

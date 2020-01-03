@@ -1,5 +1,11 @@
 <?php include('parts/header.php'); //on inclus le header?>
 <?php
+
+if(isset($_SESSION['id'])){
+    header('Location: profil');
+    exit;
+}
+
 require_once('vendor/autoload.php');
 if(isset($_POST['forminscription'])) {
 	$pseudo = htmlspecialchars($_POST['pseudo']);
