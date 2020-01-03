@@ -49,6 +49,13 @@ if(!empty($_POST)){
 ?>
 <div class="corps">
 	<h1>Créer un carnet de voyage</h1>
+	<?php
+		if (isset($er_mail)){
+			echo "<div class=\"erreur\">". $er_mail . "</div>";
+		}elseif(isset($er_mdp)){
+			echo "<div class=\"erreur\">". $er_mdp . "</div>";
+		}
+	?>
 		<form method="post">
 			<section>
 					<h2>Détails</h2>
@@ -74,11 +81,11 @@ if(!empty($_POST)){
 					<?php } ?>
 					<p>
 						<label for="date_debut">Date de début:</label>
-						<input class="entreeCarnet" type="date" id="date_debut" name="date_debut" min="<?php echo $date_ajd ?>" value="<?php if(isset($date_debut)){ echo $date_debut; }else{ echo $date_voyage; }?>">
+						<input class="entreeCarnet" type="date" id="date_debut" name="date_debut" min="<?php echo $date_ajd ?>" value="<?php if(isset($date_debut)){ echo $date_debut; }else{ echo $date_ajd; }?>">
 					</p>
 					<p>
 						<label for="date_fin">Date de fin:</label>
-						<input class="entreeCarnet" type="date" id="date_fin" name="date_fin" min="<?php echo $date_ajd ?>" value="<?php if(isset($date_fin)){ echo $date_fin; }else{ echo ''; }?>">
+						<input class="entreeCarnet" type="date" id="date_fin" name="date_fin" min="<?php echo $date_ajd ?>" value="<?php if(isset($date_fin)){ echo $date_fin; }else{ echo $date_voyage; }?>">
 						<button id="reset" class="boutonReset" type='button'>Je ne sais pas</button>
 					</p>
 			</section>
@@ -93,7 +100,7 @@ if(!empty($_POST)){
 		<div class="modal" id="modalConnexion">
 				<div class="modal-content">
 						<span class="popupModalFerme popupModalFermeConnexion"><i class="fas fa-times"></i></span>
-						<form method="post" class="connexion connexionModale">
+						<form method="post" class="connexion connexionModale" id="connexionForm">
 							<div class="teteConnexion">
 								<h3>Connexion</h3>
 								<p>Accédez à votre espace personnel et profitez de toutes les fonctionnalités</p>
@@ -120,7 +127,7 @@ if(!empty($_POST)){
 							</div>
 							<button class="boutonConnexion" type="submit" name="connexion" type='button'>Se connecter</button>
 							<div class="piedConnexion">
-								<a href="reinitialisation">Mot de passe oublié ?</a>
+								<a href="recuperation">Mot de passe oublié ?</a>
 							</div>
 						</form>
 				</div>
@@ -172,7 +179,7 @@ if(!empty($_POST)){
 
               <button class="boutonConnexion" type="submit" name="forminscription">Créer mon compte</button>
               <div class="piedConnexion">
-                Déjà des nôtres ? <a class="popupModalOuvreConnexion" type='button' onclick="toggleModalInscription();">Se connecter</a>
+                Déjà des nôtres ? <a role="button" tabindex="0" class="popupModalOuvreConnexion" type='button' onclick="toggleModalInscription();">Se connecter</a>
               </div>
             </form>
 				</div>
