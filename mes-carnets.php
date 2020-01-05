@@ -30,7 +30,7 @@
   <a href="carnets/<?= $slugify->slugify($r['titre']) ?>-<?= $r['id'] ?>">
     <div class="listeCarnets">
       <img alt="La bannière du voyage <?= $r['titre'] ?> de <?= $r['username'] ?>." src="images/image.png" class="imageCarnets" />
-      <div class="descriptionCarnets">
+      <div class="detailsCarnets">
         <h2><?= $r['titre'] ?></h2>
         <p><?php
           $phpdate = strtotime($r['date_debut']);
