@@ -1,5 +1,6 @@
 {
     "require": {
-        "sendinblue/api-v3-sdk": "^6.1.0"
+        "sendinblue/api-v3-sdk": "^6.1.0",
+        "cocur/slugify": "^4.0"
     }
 }

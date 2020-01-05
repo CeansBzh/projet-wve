@@ -411,12 +411,13 @@ article {
 	visibility: hidden;
 	transform: scale(1.1);
 	transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
-}
+} 
+
 .modal-content {
 	position: absolute;
-	top: 50%;
+	top: 10%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%);
 	background-color: white;
 	padding: 1rem 1.5rem;
 	width: 24rem;
@@ -441,11 +442,21 @@ article {
 	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
+/*Css mobiles */
+@media all and (max-width:24rem), (max-height:800){
+	.modal-content {
+		width: 95%;
+	}
+	.modal {
+		overflow-y: scroll;
+	}
+}
+
 /* Css liste carnets */
 
 .listeCarnets {
 	background-color: lightgray;
-	margin-top: 20px;
+	margin: 20px -50px 0;
 	border: #333 solid 1px;
 	height: 300px;
 	position: relative;
@@ -490,6 +501,10 @@ article {
 		margin: 0px;
 	}
 
+	.listeCarnets {
+		margin: 20px 0 0;
+	}
+
 }
 
 /*Css mobiles */
@@ -524,3 +539,4 @@ article {
 		width: initial;
 	}
 }
+

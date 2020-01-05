@@ -14,8 +14,8 @@ if(!empty($_POST)){
   $valid = true;
 
   if (isset($_POST['creer-carnet'])){
-    $titre  = (string) htmlentities(trim($titre));
-    $description = (string) htmlentities(trim($description));
+    $titre  = (string) htmlspecialchars(trim($titre));
+    $description = (string) htmlspecialchars(trim($description));
     $date_debut = date('Y-m-d', strtotime($_POST['date_debut']));
     $date_fin = date('Y-m-d', strtotime($_POST['date_fin']));
 
@@ -188,7 +188,7 @@ if(!empty($_POST)){
 <script type="text/javascript">
 	document.getElementById('reset').onclick= function() {
 		var field= document.getElementById('date_fin');
-		field.value= field.defaultValue;
+		field.value= '';
 	};
 
 	// Run on page load

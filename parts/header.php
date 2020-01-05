@@ -9,6 +9,7 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="description" content="Voyages est un créateur de carnets de voyages. Utilisez cette application afin d'organiser vos vacances en créant des nouveaux voyages et en ajoutant des étapes fournies en textes et photos. Puis partagez-le !">
+	<base href="<?= $url ?>" />
 	<title>Voyages - Carnet de bord</title>
 	<link rel="icon" type="image/png" href="images/logo.png" />
 	<link rel="stylesheet" href="style.css" />
