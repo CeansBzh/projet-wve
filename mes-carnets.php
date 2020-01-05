@@ -42,8 +42,8 @@
         if(strtotime($r['date_fin']) != -3600){
           $date_a = new DateTime($r['date_debut']);
           $date_b = new DateTime($r['date_fin']);
-          $interval = date_diff($date_a,$date_b);
-          echo $interval->format('%d');
+          $interval = $date_a->diff($date_b);
+          echo $interval->format('%a');
           echo 'J';
         }else{
           echo 'Durée indéterminée ;)';

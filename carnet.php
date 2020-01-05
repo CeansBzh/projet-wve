@@ -1,5 +1,5 @@
-<?php include('parts/header.php'); //on inclus le header?>
 <?php
+include('parts/custom.php');
 require_once('vendor/autoload.php');
 use Cocur\Slugify\Slugify;
 $slugify = new Slugify();
@@ -16,5 +16,6 @@ if($slug != $_GET['titre']){
 <div class="corps">
   <h2><?= $req['titre']; ?></h2>
   <p><?= $req['description']; ?></p>
+  <p><?= $_GET['id']; ?></p>
 </div>
 <?php include('parts/footer.php'); //on inclus le footer?>

@@ -47,7 +47,7 @@ if(!empty($_POST)){
       $_SESSION['role'] = $req['role'];
       
       if(basename($_SERVER['PHP_SELF']) === "connexion.php"){
-        header('Location:  index');
+        header('Location:' . $url);
         exit;
       }else{
         header('Location: ' . $_SERVER['REQUEST_URI']);
