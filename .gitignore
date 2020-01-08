@@ -3,3 +3,4 @@ cache/*
 /cache/*
 .htaccess
 connexionDB.php
+js/routes.js
