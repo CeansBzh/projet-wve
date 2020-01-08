@@ -1,6 +1,6 @@
 <?php //on inclus le header à la main car il faut le tag "base"
 session_start();
-include('connexionDB.php');
+include('php/connexionDB.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr">

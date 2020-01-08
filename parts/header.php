@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include('connexionDB.php');
+	include('php/connexionDB.php');
 
 ?>
 <!DOCTYPE html>
