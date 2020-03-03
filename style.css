@@ -127,6 +127,7 @@ a > button:active{
 	a > button{
 		display:block;
 		margin:0.4em auto;
+		font-size: 80%;
 	}
 }
 
@@ -527,6 +528,21 @@ article {
 	border-radius: 15px;
 	overflow-wrap: break-word;
 }
+
+/* Css Edition carnet */
+
+.redirEditionCarnet {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.rogneEditionCarnet {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
 
 /*Css responsive */
 

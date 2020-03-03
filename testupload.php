@@ -20,30 +20,71 @@
   $signature = hash_hmac('sha1', $token . $expire, $imagekitapi); // Creating the signature. I have tested your code and mine, and with the same inputs there is the exact same outputs.
 ?>
 
-<!-- Your form code -->
-<form action="#" onsubmit="upload()">
-	<input type="file" id="file1" />
-	<input type="submit" />
+<form method="post" action="" enctype="multipart/form-data" id="myform">
+  <div >
+    <input type="file" id="file" name="file" onchange="loadImageFile();"/>
+    <input type="button" class="button" value="Upload" id="televerser">
+  </div>
 </form>
 
-
-<div><?php echo $signature ?></div>
-<div><?php echo json_encode($signature, JSON_HEX_TAG); ?></div>
-<div><?php echo $token ?></div>
-<div><?php echo json_encode($token, JSON_HEX_TAG); ?></div>
-<div><?php echo $expire ?></div>
-<div><?php echo json_encode($expire, JSON_HEX_TAG); ?></div>
-<div><?php echo json_encode($token . $expire, JSON_HEX_TAG); ?></div>
+<div id="#apercu"></div>
+<img id="original-Img"/>
 
 <!-- Your jQuery script (modified to remove the GET auth part) -->
 <script>
+var fileReader = new FileReader();
+var filterType = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
 
-	function upload() {
-	  var file = document.getElementById("file1");
+fileReader.onload = function (event) {
+  var image = new Image();
+  
+  image.onload=function(){
+      document.getElementById("original-Img").src=image.src;
+      var canvas=document.createElement("canvas");
+      var context=canvas.getContext("2d");
+      canvas.width=image.width/4;
+      canvas.height=image.height/4;
+      context.drawImage(image,
+          0,
+          0,
+          image.width,
+          image.height,
+          0,
+          0,
+          canvas.width,
+          canvas.height
+      );
+      
+      document.getElementById("upload-Preview").src = canvas.toDataURL();
+  }
+  image.src=event.target.result;
+};
+
+var loadImageFile = function () {
+  var uploadImage = document.getElementById("upload-Image");
+  
+  //check and retuns the length of uploded file.
+  if (uploadImage.files.length === 0) { 
+    return; 
+  }
+  
+  //Is Used for validate a valid file.
+  var uploadFile = document.getElementById("upload-Image").files[0];
+  if (!filterType.test(uploadFile.type)) {
+    alert("Please select a valid image."); 
+    return;
+  }
+  
+  fileReader.readAsDataURL(uploadFile);
+}
+
+$(document).ready(function(){
+  $("#televerser").click(function(){
+	  var files = $('#file')[0].files[0];
 		var formData = new FormData();
-		formData.append("file", file);
+		formData.append("file", files);
 		formData.append("fileName", "abc.jpg");
-    formData.append("publicKey", "public_455lLx4XYwRN8q4k3cIxLHoJXbs");
+    formData.append("publicKey", "public_455lLx4XYwRN8q4k3cIxLHoJXbs=");
 
     // Let's get the signature, token and expire from server side
     formData.append("signature", <?php echo json_encode($signature, JSON_HEX_TAG); ?> || "");
@@ -66,7 +107,8 @@
         return false;
       }
     });
-  }
+  });
+});
 
   // Note that security isn't a problem atm as this code purpose is only testing
 </script>

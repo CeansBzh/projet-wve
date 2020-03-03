@@ -1,7 +1,7 @@
 <?php include('parts/header.php'); //on inclus le header?>
 <?php
 
-  if (isset($_SESSION['id'])){
+  if(isset($_SESSION['id'])){
     header('Location: index');
     exit;
   }

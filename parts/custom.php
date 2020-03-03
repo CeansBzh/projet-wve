@@ -12,7 +12,10 @@ include('php/connexionDB.php');
 <title>Voyages - Carnet de bord</title>
 <link rel="icon" type="image/png" href="<?= $url ?>images/logo.png" />
 <link rel="stylesheet" href="<?= $url ?>style.css" />
+<link rel="stylesheet" href="<?= $url ?>node_modules/croppie/croppie.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="<?= $url ?>node_modules/croppie/croppie.min.js"></script>
 </head>
 <body>
 <noscript>
